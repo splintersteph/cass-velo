@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cass à Vélo — Balades et cours de vélo autour de Grenoble</title>
+<meta name="description" content="Balades touristiques à vélo autour de Grenoble, cours de vélo pour enfants, seniors et personnes à mobilité réduite. Encadrement par une monitrice vélo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --vert:#2f5d50; --vert-fonce:#1f3f36; --sable:#f6f1e7; --creme:#fffdf8;
+    --ocre:#d9822b; --ciel:#cfe3e8; --texte:#22302c; --gris:#5d6b66;
+    --rayon:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,sans-serif;color:var(--texte);background:var(--creme);line-height:1.6;font-size:17px}
+  h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.15;color:var(--vert-fonce)}
+  a{color:var(--vert)}
+  .conteneur{max-width:1120px;margin:0 auto;padding:0 24px}
+
+  /* Navigation */
+  header.nav{position:sticky;top:0;z-index:10;background:rgba(255,253,248,.92);backdrop-filter:blur(8px);border-bottom:1px solid #e9e2d3}
+  header.nav .conteneur{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .logo{font-family:Fraunces,serif;font-weight:700;font-size:1.35rem;color:var(--vert-fonce);text-decoration:none;display:flex;align-items:center;gap:10px}
+  .logo svg{width:34px;height:34px}
+  nav ul{display:flex;gap:26px;list-style:none}
+  nav a{text-decoration:none;color:var(--texte);font-weight:500;font-size:.95rem}
+  nav a:hover{color:var(--ocre)}
+  .burger{display:none;background:none;border:0;font-size:1.6rem;cursor:pointer;color:var(--vert-fonce)}
+
+  /* Hero */
+  .hero{position:relative;background:linear-gradient(180deg,var(--ciel) 0%,var(--sable) 100%);overflow:hidden}
+  .hero .conteneur{position:relative;z-index:2;padding:96px 24px 210px}
+  .hero h1{font-size:clamp(2.3rem,5vw,3.8rem);max-width:720px}
+  .hero p{font-size:1.2rem;max-width:580px;margin:22px 0 34px;color:#33433e}
+  .montagnes{position:absolute;bottom:0;left:0;width:100%;height:260px;z-index:1}
+  .btn{display:inline-block;padding:14px 26px;border-radius:999px;font-weight:600;text-decoration:none;transition:transform .15s,box-shadow .15s}
+  .btn-plein{background:var(--ocre);color:#fff;box-shadow:0 6px 18px rgba(217,130,43,.35)}
+  .btn-vide{border:2px solid var(--vert);color:var(--vert);margin-left:10px}
+  .btn:hover{transform:translateY(-2px)}
+
+  section{padding:88px 0}
+  .surtitre{text-transform:uppercase;letter-spacing:.14em;font-size:.8rem;font-weight:600;color:var(--ocre);margin-bottom:10px}
+  h2{font-size:clamp(1.8rem,3.4vw,2.6rem);margin-bottom:18px}
+  .intro{max-width:680px;color:var(--gris);font-size:1.08rem;margin-bottom:48px}
+
+  /* Publics */
+  .grille{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .carte{background:#fff;border-radius:var(--rayon);padding:30px;border:1px solid #ece5d6;transition:transform .2s,box-shadow .2s}
+  .carte:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(31,63,54,.09)}
+  .carte .icone{width:54px;height:54px;border-radius:14px;display:grid;place-items:center;font-size:1.6rem;margin-bottom:18px;background:var(--sable)}
+  .carte h3{font-size:1.3rem;margin-bottom:10px}
+  .carte p{color:var(--gris)}
+  .carte ul{margin-top:12px;padding-left:18px;color:var(--gris)}
+
+  /* Balades */
+  #balades{background:var(--sable)}
+  .niveaux{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;margin-bottom:56px}
+  .niveau{background:#fff;border-radius:var(--rayon);padding:26px;border-top:6px solid var(--vert)}
+  .niveau.n2{border-color:var(--ocre)}
+  .niveau.n3{border-color:#a8462e}
+  .niveau .pastilles{display:flex;gap:5px;margin-bottom:12px}
+  .niveau .pastilles span{width:12px;height:12px;border-radius:50%;background:#e2dccd}
+  .niveau .pastilles span.on{background:currentColor}
+  .niveau h3{font-size:1.2rem;margin-bottom:6px}
+  .niveau .meta{font-size:.9rem;color:var(--gris);margin-bottom:8px}
+  .themes h3.sous{font-size:1.5rem;margin-bottom:22px}
+  .theme{display:flex;gap:20px;background:#fff;border-radius:var(--rayon);padding:24px;align-items:flex-start}
+  .theme .num{font-family:Fraunces,serif;font-size:2rem;color:var(--ocre);line-height:1}
+  .theme h4{font-family:Fraunces,serif;font-size:1.15rem;color:var(--vert-fonce);margin-bottom:6px}
+  .theme p{color:var(--gris);font-size:.97rem}
+
+  /* Passeport */
+  #passeport .conteneur{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
+  .passeport-visuel{background:var(--vert);border-radius:24px;padding:34px;color:#fff;box-shadow:0 20px 40px rgba(31,63,54,.25);transform:rotate(-2deg)}
+  .passeport-visuel h3{color:#fff;font-size:1.4rem;margin-bottom:4px}
+  .passeport-visuel small{opacity:.8}
+  .tampons{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+  .tampon{aspect-ratio:1;border:2px dashed rgba(255,255,255,.45);border-radius:50%;display:grid;place-items:center;text-align:center;font-size:.72rem;font-weight:600;padding:6px;line-height:1.2}
+  .tampon.ok{border:3px solid var(--ocre);color:#ffd9b0;background:rgba(217,130,43,.15);transform:rotate(-12deg)}
+  #passeport ol{margin:18px 0 0 20px;color:var(--gris)}
+  #passeport li{margin-bottom:8px}
+
+  /* À propos */
+  #apropos{background:var(--vert-fonce);color:#e8efe9}
+  #apropos h2{color:#fff}
+  #apropos .conteneur{display:grid;grid-template-columns:280px 1fr;gap:56px;align-items:center}
+  .portrait{width:260px;height:260px;border-radius:50%;background:var(--ocre);display:grid;place-items:center;font-family:Fraunces,serif;font-size:5rem;color:#fff;border:8px solid rgba(255,255,255,.15)}
+  #apropos p{margin-bottom:14px;max-width:640px}
+  .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .badges span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:6px 14px;border-radius:999px;font-size:.88rem}
+
+  /* FAQ */
+  details{background:#fff;border:1px solid #ece5d6;border-radius:14px;padding:18px 22px;margin-bottom:12px}
+  summary{font-weight:600;cursor:pointer;color:var(--vert-fonce)}
+  details p{margin-top:10px;color:var(--gris)}
+
+  /* Contact */
+  #contact{background:var(--sable)}
+  .form{background:#fff;border-radius:var(--rayon);padding:34px;max-width:720px;display:grid;gap:16px}
+  .form .ligne{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  label{font-weight:600;font-size:.9rem;display:block;margin-bottom:6px}
+  input,select,textarea{width:100%;padding:12px 14px;border:1px solid #d9d1bf;border-radius:10px;font:inherit;background:var(--creme)}
+  textarea{min-height:120px;resize:vertical}
+  button.btn{border:0;cursor:pointer;font:inherit;font-weight:600}
+
+  footer{background:var(--vert-fonce);color:#b9c9c2;padding:34px 0;font-size:.9rem}
+  footer .conteneur{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+  @media (max-width:820px){
+    nav ul{display:none;position:absolute;top:66px;left:0;right:0;background:var(--creme);flex-direction:column;padding:18px 24px;gap:14px;border-bottom:1px solid #e9e2d3}
+    nav ul.ouvert{display:flex}
+    .burger{display:block}
+    #passeport .conteneur,#apropos .conteneur{grid-template-columns:1fr}
+    .portrait{width:180px;height:180px;font-size:3.6rem}
+    .form .ligne{grid-template-columns:1fr}
+    .btn-vide{margin:12px 0 0}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="conteneur">
+    <a href="#" class="logo">
+      <svg viewBox="0 0 40 40" fill="none" stroke="#2f5d50" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="26" r="7"/><circle cx="30" cy="26" r="7"/><path d="M10 26l7-12h9l4 12M17 14l5 12h-12M24 9h4"/></svg>
+      Cass à Vélo
+    </a>
+    <button class="burger" aria-label="Menu" onclick="document.querySelector('nav ul').classList.toggle('ouvert')">☰</button>
+    <nav><ul>
+      <li><a href="#publics">Pour qui ?</a></li>
+      <li><a href="#balades">Balades</a></li>
+      <li><a href="#passeport">Passeport Belle Via</a></li>
+      <li><a href="#apropos">Qui suis-je</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="conteneur">
+    <p class="surtitre">Grenoble · Isère · entre Vercors, Chartreuse et Belledonne</p>
+    <h1>Découvrir Grenoble à vélo, à son rythme.</h1>
+    <p>Balades touristiques guidées, cours de vélo pour les enfants, les seniors et les personnes à mobilité réduite. Chacun trouve sa façon de pédaler, encadré par une monitrice vélo.</p>
+    <a href="#balades" class="btn btn-plein">Voir les balades</a>
+    <a href="#contact" class="btn btn-vide">Me contacter</a>
+  </div>
+  <svg class="montagnes" viewBox="0 0 1440 260" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 170 L140 80 L240 140 L380 30 L520 130 L640 70 L760 150 L900 40 L1040 120 L1180 60 L1300 130 L1440 90 L1440 260 L0 260Z" fill="#9fbfb5"/>
+    <path d="M380 30 L345 58 L365 55 L380 68 L398 52 L415 56Z M900 40 L868 66 L886 63 L900 76 L918 60 L934 63Z" fill="#fff" opacity=".9"/>
+    <path d="M0 210 L180 140 L330 190 L500 120 L700 200 L880 130 L1060 190 L1250 140 L1440 180 L1440 260 L0 260Z" fill="#5f8f80"/>
+    <path d="M0 260 L0 238 Q360 205 720 232 T1440 226 L1440 260Z" fill="#f6f1e7"/>
+  </svg>
+</section>
+
+<section id="publics">
+  <div class="conteneur">
+    <p class="surtitre">Pour qui ?</p>
+    <h2>Le vélo pour tout le monde</h2>
+    <p class="intro">Que vous veniez découvrir la région, apprendre à pédaler ou reprendre confiance après des années sans vélo, chaque sortie est pensée pour vous : groupes réduits, rythme adapté, sécurité d'abord.</p>
+    <div class="grille">
+      <div class="carte">
+        <div class="icone">🗺️</div>
+        <h3>Visiteurs et curieux</h3>
+        <p>Des circuits touristiques guidés pour découvrir Grenoble et ses environs autrement : patrimoine, histoire, panoramas et bonnes adresses.</p>
+      </div>
+      <div class="carte">
+        <div class="icone">🧒</div>
+        <h3>Enfants</h3>
+        <p>Apprendre à rouler sans petites roues, gagner en équilibre puis circuler en sécurité en ville. Des séances ludiques, en petits groupes.</p>
+      </div>
+      <div class="carte">
+        <div class="icone">🌿</div>
+        <h3>Seniors</h3>
+        <p>Remettre le pied à l'étrier en douceur, découvrir le vélo à assistance électrique, retrouver des sorties conviviales et sans pression.</p>
+      </div>
+      <div class="carte">
+        <div class="icone">♿</div>
+        <h3>Mobilité réduite</h3>
+        <p>Des séances individuelles adaptées à chaque situation, pour que le vélo reste un plaisir accessible. Parlons-en ensemble pour trouver la bonne formule.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="balades">
+  <div class="conteneur">
+    <p class="surtitre">Balades guidées</p>
+    <h2>Choisissez votre formule</h2>
+    <p class="intro">Grenoble est l'une des villes les plus plates de France au pied des montagnes, idéale pour pédaler. Trois niveaux pour que personne ne reste sur le bord de la piste.</p>
+
+    <div class="niveaux">
+      <div class="niveau" style="color:var(--vert)">
+        <div class="pastilles"><span class="on"></span><span></span><span></span></div>
+        <h3 style="color:var(--vert-fonce)">Tranquille</h3>
+        <p class="meta">Environ 2 h · terrain plat · pauses fréquentes</p>
+        <p style="color:var(--gris)">Pour les débutants, les familles et ceux qui veulent surtout profiter du paysage.</p>
+      </div>
+      <div class="niveau n2" style="color:var(--ocre)">
+        <div class="pastilles"><span class="on"></span><span class="on"></span><span></span></div>
+        <h3 style="color:var(--vert-fonce)">Découverte</h3>
+        <p class="meta">Demi-journée · quelques côtes douces</p>
+        <p style="color:var(--gris)">Pour les cyclistes occasionnels qui veulent aller un peu plus loin, vers les berges et les premiers villages.</p>
+      </div>
+      <div class="niveau n3" style="color:#a8462e">
+        <div class="pastilles"><span class="on"></span><span class="on"></span><span class="on"></span></div>
+        <h3 style="color:var(--vert-fonce)">Évasion</h3>
+        <p class="meta">Journée · dénivelé · pique-nique</p>
+        <p style="color:var(--gris)">Pour les sportifs : sortir de la ville et gagner les contreforts des massifs.</p>
+      </div>
+    </div>
+
+    <div class="themes">
+      <h3 class="sous">Les balades à thème</h3>
+      <div class="grille">
+        <div class="theme"><span class="num">01</span><div>
+          <h4>Grenoble, terre de sport</h4>
+          <p>Sur les traces des Jeux olympiques d'hiver de 1968 et des grandes heures du sport grenoblois : sites, anecdotes et figures locales.</p></div></div>
+        <div class="theme"><span class="num">02</span><div>
+          <h4>Patrimoine et culture</h4>
+          <p>Vieille ville, quais de l'Isère, vue sur la Bastille, architecture et histoire industrielle, racontés au fil des rues.</p></div></div>
+        <div class="theme"><span class="num">03</span><div>
+          <h4>Au fil de l'Isère</h4>
+          <p>Une échappée nature le long de la Belle Via, entre vergers, noyeraies et villages, avec le passeport vélo à tamponner.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="passeport">
+  <div class="conteneur">
+    <div>
+      <p class="surtitre">Nouveau</p>
+      <h2>Le passeport vélo de la Belle Via</h2>
+      <p style="color:var(--gris)">Inspiré des carnets de tampons des pistes cyclables coréennes : à chaque étape franchie, un tampon. Un jeu pour les enfants, un souvenir pour les grands, et une bonne raison de revenir pédaler.</p>
+      <ol>
+        <li>Recevez votre passeport lors de votre première balade.</li>
+        <li>Faites-le tamponner à chaque étape du parcours.</li>
+        <li>Complétez-le pour obtenir votre diplôme de cyclo-voyageur.</li>
+      </ol>
+    </div>
+    <div class="passeport-visuel" aria-hidden="true">
+      <small>PASSEPORT VÉLO</small>
+      <h3>Belle Via · Isère</h3>
+      <small>Titulaire : ____________</small>
+      <div class="tampons">
+        <div class="tampon ok">GRENOBLE<br>✓</div>
+        <div class="tampon ok">ÉTAPE 2<br>✓</div>
+        <div class="tampon">ÉTAPE 3</div>
+        <div class="tampon">ÉTAPE 4</div>
+        <div class="tampon">ÉTAPE 5</div>
+        <div class="tampon">ARRIVÉE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="apropos">
+  <div class="conteneur">
+    <div class="portrait">C</div>
+    <div>
+      <p class="surtitre">Qui suis-je</p>
+      <h2>Bonjour, moi c'est Cassandre</h2>
+      <p>Passionnée de vélo et amoureuse de la région grenobloise, je suis actuellement en formation pour devenir monitrice vélo. Mon envie : partager le plaisir de rouler avec le plus grand nombre, quel que soit l'âge ou la condition physique.</p>
+      <p>Faire découvrir un coin de patrimoine à des visiteurs, voir un enfant lâcher les petites roues ou une personne retrouver l'autonomie d'une sortie à vélo, c'est pour ça que je pédale.</p>
+      <div class="badges">
+        <span>🎓 Monitrice vélo (formation en cours)</span>
+        <span>📍 Grenoble et alentours</span>
+        <span>👥 Petits groupes</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="conteneur" style="max-width:820px">
+    <p class="surtitre">Questions fréquentes</p>
+    <h2>Bon à savoir</h2>
+    <details><summary>Faut-il venir avec son propre vélo ?</summary><p>Ce n'est pas obligatoire. Précisez-le au moment de la réservation et nous trouverons une solution de location adaptée.</p></details>
+    <details><summary>Je n'ai pas fait de vélo depuis des années, est-ce possible ?</summary><p>Bien sûr ! La formule « Tranquille » et les cours individuels sont faits pour ça. On commence par un temps de remise en confiance, sans pression.</p></details>
+    <details><summary>Les balades ont-elles lieu par tous les temps ?</summary><p>En cas de pluie forte ou d'alerte météo, la sortie est reportée ou remboursée.</p></details>
+    <details><summary>Proposez-vous des sorties pour les groupes, écoles ou associations ?</summary><p>Oui, sur demande : écrivez-moi avec le nombre de participants et le public concerné.</p></details>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="conteneur">
+    <p class="surtitre">Contact</p>
+    <h2>Envie de pédaler ?</h2>
+    <p class="intro">Une question, une demande de balade ou de cours ? Écrivez-moi, je vous réponds rapidement.</p>
+    <form class="form" id="formulaire">
+      <div class="ligne">
+        <div><label for="nom">Nom</label><input id="nom" required></div>
+        <div><label for="email">E-mail</label><input id="email" type="email" required></div>
+      </div>
+      <div>
+        <label for="demande">Je suis intéressé(e) par</label>
+        <select id="demande">
+          <option>Une balade touristique</option>
+          <option>Des cours pour un enfant</option>
+          <option>Des cours ou sorties pour senior</option>
+          <option>Un accompagnement mobilité réduite</option>
+          <option>Une sortie de groupe</option>
+          <option>Autre chose</option>
+        </select>
+      </div>
+      <div><label for="message">Message</label><textarea id="message" placeholder="Nombre de personnes, dates souhaitées, niveau…"></textarea></div>
+      <div><button type="submit" class="btn btn-plein">Envoyer ma demande</button></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="conteneur">
+    <span>© <span id="annee"></span> Cass à Vélo · Grenoble</span>
+    <span>Balades et cours de vélo pour tous</span>
+  </div>
+</footer>
+
+<script>
+  // Adresse de réception des demandes : à remplacer par la vraie adresse
+  const EMAIL_CONTACT = "contact@exemple.fr";
+  document.getElementById('annee').textContent = new Date().getFullYear();
+  document.querySelectorAll('nav a').forEach(a => a.addEventListener('click', () => document.querySelector('nav ul').classList.remove('ouvert')));
+  document.getElementById('formulaire').addEventListener('submit', e => {
+    e.preventDefault();
+    const nom = document.getElementById('nom').value;
+    const email = document.getElementById('email').value;
+    const demande = document.getElementById('demande').value;
+    const msg = document.getElementById('message').value;
+    const corps = `Nom : ${nom}\nE-mail : ${email}\nDemande : ${demande}\n\n${msg}`;
+    window.location.href = `mailto:${EMAIL_CONTACT}?subject=${encodeURIComponent('Demande : ' + demande)}&body=${encodeURIComponent(corps)}`;
+  });
+</script>
+</body>
+</html>
