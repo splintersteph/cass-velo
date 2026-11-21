@@ -53,10 +53,26 @@ if (zoneCarte && window.L) {
     el.innerHTML = `<span class="niveau"><i aria-hidden="true">${barres}</i>${NIVEAUX[c.niveau]}<span style="font-weight:400;color:var(--doux);margin-left:6px">${c.theme}</span></span>
       <h3>${c.titre}</h3><p>${c.resume}</p>
       <div class="chiffres"><span>${c.distance}</span><span>${c.denivele} D+</span><span>${c.duree}</span></div>
-      <ol class="etapes">${c.etapes.map(e => `<li>${e}</li>`).join("")}</ol>`;
+      <ol class="etapes">${c.etapes.map(e => `<li>${e}</li>`).join("")}</ol>
+      <div class="photos-circuit"></div>`;
+    const sesPhotos = PHOTOS.filter(ph => ph.circuit === c.id);
+    sesPhotos.forEach((ph, k) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("aria-label", "Agrandir : " + ph.legende);
+      b.innerHTML = `<img src="img/${ph.id}-p.webp" alt="${ph.legende}" loading="lazy">`;
+      b.addEventListener("click", e => { e.stopPropagation(); ouvrirPhoto(sesPhotos, k); });
+      el.querySelector(".photos-circuit").appendChild(b);
+    });
     el.addEventListener("click", () => choisir(c.id));
     el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); choisir(c.id); } });
     liste.appendChild(el);
+  });
+
+  // Nos photos géolocalisées, en vignettes rondes sur la carte
+  PHOTOS.forEach((ph, i) => {
+    const icone = L.divIcon({className: "", html: `<div class="pin-photo" style="background-image:url(img/${ph.id}-p.webp)"></div>`, iconSize: [46, 46], iconAnchor: [23, 23]});
+    L.marker(ph.pos, {icon: icone, title: ph.legende, keyboard: true}).on("click", () => ouvrirPhoto(PHOTOS, i)).addTo(carte);
   });
 
   const tout = L.featureGroup(Object.values(couches));
@@ -247,4 +263,82 @@ if (voyage) {
   addEventListener("scroll", demander, {passive: true});
   addEventListener("resize", demander);
   rendre();
+}
+
+// ---------- Visionneuse photo ----------
+let visListe = [], visIndex = 0;
+const vis = document.createElement("div");
+vis.className = "visionneuse";
+vis.setAttribute("role", "dialog");
+vis.setAttribute("aria-modal", "true");
+vis.setAttribute("aria-label", "Photo agrandie");
+vis.innerHTML = `<button class="vis-fermer" aria-label="Fermer">×</button><button class="vis-prec" aria-label="Photo précédente">‹</button><figure><img alt=""><figcaption></figcaption></figure><button class="vis-suiv" aria-label="Photo suivante">›</button>`;
+document.body.appendChild(vis);
+function visAfficher() {
+  const ph = visListe[visIndex];
+  vis.querySelector("img").src = `img/${ph.id}.webp`;
+  vis.querySelector("img").alt = ph.legende;
+  vis.querySelector("figcaption").innerHTML = `<span>${ph.jour}, ${ph.lieu}</span>${ph.legende}`;
+  vis.querySelector(".vis-prec").hidden = vis.querySelector(".vis-suiv").hidden = visListe.length < 2;
+}
+function ouvrirPhoto(liste, i) {
+  visListe = liste; visIndex = i; visAfficher();
+  vis.classList.add("ouverte"); vis.querySelector(".vis-fermer").focus();
+}
+function fermerPhoto() { vis.classList.remove("ouverte"); }
+vis.querySelector(".vis-fermer").onclick = fermerPhoto;
+vis.querySelector(".vis-prec").onclick = () => { visIndex = (visIndex - 1 + visListe.length) % visListe.length; visAfficher(); };
+vis.querySelector(".vis-suiv").onclick = () => { visIndex = (visIndex + 1) % visListe.length; visAfficher(); };
+vis.addEventListener("click", e => { if (e.target === vis) fermerPhoto(); });
+addEventListener("keydown", e => {
+  if (!vis.classList.contains("ouverte")) return;
+  if (e.key === "Escape") fermerPhoto();
+  if (e.key === "ArrowLeft") vis.querySelector(".vis-prec").click();
+  if (e.key === "ArrowRight") vis.querySelector(".vis-suiv").click();
+});
+
+// ---------- Révélation photo et carnet de route (accueil) ----------
+const calmeGlobal = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const rev = document.getElementById("revelation");
+const carnet = document.getElementById("carnet");
+if (carnet) {
+  carnet.querySelectorAll(".cliche").forEach(f => f.querySelector("button").addEventListener("click", () => ouvrirPhoto(PHOTOS, +f.dataset.i)));
+}
+function progression(section, vue) {
+  const course = section.offsetHeight - vue.offsetHeight;
+  return Math.min(1, Math.max(0, (scrollY + 72 - section.offsetTop) / Math.max(course, 1)));
+}
+if ((rev || carnet) && !calmeGlobal) {
+  const piste = carnet && carnet.querySelector(".carnet-piste");
+  const vueCarnet = carnet && carnet.querySelector(".carnet-vue");
+  function dimensionner() {
+    if (!carnet) return;
+    const largeur = piste.scrollWidth - innerWidth;
+    carnet.style.height = `${largeur + vueCarnet.offsetHeight + 72}px`;
+  }
+  let attente = false;
+  function animer() {
+    attente = false;
+    if (rev) {
+      const p = progression(rev, rev.querySelector(".rev-scene"));
+      const e = Math.min(1, p / 0.6), ease = 1 - Math.pow(1 - e, 3);
+      rev.style.setProperty("--rev-y", `${22 * (1 - ease)}%`);
+      rev.style.setProperty("--rev-x", `${32 * (1 - ease)}%`);
+      rev.style.setProperty("--rev-r", `${28 * (1 - ease)}px`);
+      rev.style.setProperty("--rev-s", (1.25 - 0.25 * ease).toFixed(3));
+      rev.style.setProperty("--rev-t", Math.min(1, Math.max(0, (p - 0.5) / 0.3)).toFixed(3));
+    }
+    if (carnet) {
+      const p = progression(carnet, vueCarnet);
+      piste.style.transform = `translate3d(${-p * (piste.scrollWidth - innerWidth)}px,0,0)`;
+    }
+  }
+  const demande = () => { if (!attente) { attente = true; requestAnimationFrame(animer); } };
+  addEventListener("scroll", demande, {passive: true});
+  addEventListener("resize", () => { dimensionner(); demande(); });
+  addEventListener("load", () => { dimensionner(); demande(); });
+  dimensionner(); animer();
+} else if (rev) {
+  rev.style.setProperty("--rev-y", "0%"); rev.style.setProperty("--rev-x", "0%");
+  rev.style.setProperty("--rev-s", "1"); rev.style.setProperty("--rev-t", "1");
 }

@@ -286,3 +286,58 @@ textarea{min-height:140px;resize:vertical}
   .chapitre{transition:none}
 }
 .chapitre.fin p{text-shadow:0 1px 12px rgba(13,22,52,.9)}
+
+/* ================= Révélation photo ================= */
+.revelation{height:240vh;position:relative;background:#0d1634}
+.rev-scene{position:sticky;top:72px;height:calc(100vh - 72px);overflow:hidden;display:grid;place-items:center}
+.rev-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:inset(var(--rev-y,22%) var(--rev-x,32%) round var(--rev-r,28px));transform:scale(var(--rev-s,1.25));will-change:clip-path,transform}
+.rev-texte{position:relative;z-index:2;color:#fff;max-width:900px;padding:0 28px;text-align:center;opacity:var(--rev-t,0);transform:translateY(calc((1 - var(--rev-t,0)) * 30px))}
+.rev-texte h2{font-size:clamp(2.6rem,7vw,6rem);font-weight:800;letter-spacing:-.045em;line-height:.95;text-shadow:0 4px 40px rgba(0,0,0,.45)}
+.rev-texte p{font-size:clamp(1.1rem,1.7vw,1.4rem);margin:22px auto 0;max-width:46ch;text-shadow:0 2px 18px rgba(0,0,0,.7)}
+.rev-scene::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,22,52,.1),rgba(13,22,52,.55));opacity:var(--rev-t,0);pointer-events:none}
+
+/* ================= Carnet de route horizontal ================= */
+.carnet{position:relative;background:var(--glacier)}
+.carnet-vue{position:sticky;top:72px;height:calc(100vh - 72px);overflow:hidden;display:flex;align-items:center}
+.carnet-piste{display:flex;gap:28px;padding:0 8vw;align-items:center;will-change:transform}
+.carnet-intro,.carnet-fin{flex:none;width:min(440px,78vw)}
+.carnet-intro h2{font-size:clamp(2.6rem,5.4vw,4.4rem);font-weight:800;letter-spacing:-.04em;line-height:.95;margin-bottom:20px}
+.carnet-intro p{color:var(--doux);font-size:1.15rem}
+.carnet-astuce{margin-top:22px;font-size:1rem!important;font-weight:700;color:var(--encre)!important}
+.carnet-fin{background:var(--encre);color:#fff;border-radius:8px;padding:40px}
+.carnet-fin h3{font-size:2rem;margin-bottom:14px}
+.carnet-fin p{color:#c9d4e3;margin-bottom:26px}
+.cliche{flex:none;margin:0;background:#fff;padding:12px 12px 18px;border-radius:4px;box-shadow:0 18px 40px -18px rgba(22,36,59,.45)}
+.cliche:nth-of-type(3n+1){transform:rotate(-1.4deg) translateY(-14px)}
+.cliche:nth-of-type(3n+2){transform:rotate(1.1deg) translateY(16px)}
+.cliche:nth-of-type(3n){transform:rotate(-.4deg)}
+.cliche-btn{display:block;border:0;padding:0;background:none;cursor:zoom-in}
+.cliche img{height:min(56vh,460px);width:auto;max-width:none;display:block;border-radius:2px}
+.cliche figcaption{margin-top:12px;font-size:1rem;max-width:34ch}
+.cliche .jour{display:block;font-family:var(--titre);font-weight:700;font-size:.92rem;color:var(--chartreuse-fonce)}
+@media (prefers-reduced-motion:reduce){.revelation{height:auto}.rev-scene{position:relative;top:0}.carnet-vue{position:relative;top:0;height:auto;overflow-x:auto;padding:60px 0}}
+
+/* ================= Visionneuse ================= */
+.visionneuse{position:fixed;inset:0;z-index:100;background:rgba(9,14,28,.94);display:none;align-items:center;justify-content:center;padding:4vh 4vw}
+.visionneuse.ouverte{display:flex}
+.visionneuse figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:14px;max-height:100%}
+.visionneuse img{max-width:92vw;max-height:80vh;object-fit:contain;border-radius:4px}
+.visionneuse figcaption{color:#e8eef5;text-align:center;font-size:1.05rem}
+.visionneuse figcaption span{display:block;color:var(--chartreuse);font-family:var(--titre);font-weight:700;font-size:.95rem}
+.visionneuse button{position:absolute;background:rgba(255,255,255,.1);color:#fff;border:0;width:52px;height:52px;border-radius:50%;font-size:1.6rem;cursor:pointer;display:grid;place-items:center}
+.visionneuse button:hover{background:rgba(255,255,255,.22)}
+.vis-fermer{top:20px;right:20px}.vis-prec{left:20px;top:50%}.vis-suiv{right:20px;top:50%}
+
+/* ================= En-têtes photo, photos des circuits ================= */
+.entete-photo{position:relative;background:var(--encre) var(--photo) center/cover no-repeat;padding:140px 0 96px}
+.entete-photo::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,36,59,.92) 0%,rgba(22,36,59,.55) 55%,rgba(22,36,59,.15) 100%)}
+.entete-photo .wrap{position:relative}
+.photos-circuit{display:none;gap:8px;margin-top:14px;overflow-x:auto}
+.circuit.actif .photos-circuit{display:flex}
+.photos-circuit button{flex:none;border:0;padding:0;border-radius:4px;overflow:hidden;cursor:zoom-in;width:110px;height:80px}
+.photos-circuit img{width:100%;height:100%;object-fit:cover}
+.pin-photo{width:46px!important;height:46px!important;border-radius:50%;border:3px solid #fff;box-shadow:0 4px 14px rgba(0,0,0,.35);background-size:cover;background-position:center;cursor:zoom-in}
+.origine{margin-top:36px;padding:28px;background:var(--papier);border-radius:6px;border:1px solid var(--trait)}
+.origine h3{font-size:1.5rem;margin-bottom:10px}
+.origine p{color:var(--doux);margin-bottom:14px}
+.origine a,.lien-tqa{font-weight:700;color:var(--encre);text-decoration-color:var(--chartreuse);text-decoration-thickness:3px;text-underline-offset:5px}

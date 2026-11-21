@@ -65,3 +65,26 @@ const ETAPES_VIA = [
   {nom: "Saint-Nazaire-en-Royans", pos: [45.0600,5.2470]},
   {nom: "Romans-sur-Isère", pos: [45.0440,5.0510]}
 ];
+
+// Photos de notre voyage sur la Belle Via et dans le Vercors (octobre-novembre 2024)
+const PHOTOS = [
+  {id: "bv-003", jour: "Jour 1", lieu: "Près de Vinay", legende: "Entre les noyeraies, sur la Belle Via", pos: [45.207, 5.436]},
+  {id: "bv-004", jour: "Jour 1", lieu: "Vallée de l'Isère", legende: "La vallée de l'Isère au pied du Vercors", pos: [45.205, 5.456]},
+  {id: "bv-009", jour: "Jour 1", lieu: "Grenoble", legende: "Grenoble et l'Isère depuis la Bastille", pos: [45.199, 5.724], circuit: "quais"},
+  {id: "bv-013", jour: "Jour 1", lieu: "Grenoble", legende: "Les bulles de la Bastille au coucher du soleil", pos: [45.199, 5.725], circuit: "quais"},
+  {id: "bv-016", jour: "Jour 2", lieu: "Meylan", legende: "Sur la digue de l'Isère, à la sortie de Grenoble", pos: [45.207, 5.803], circuit: "gresivaudan"},
+  {id: "bv-018", jour: "Jour 2", lieu: "Grésivaudan", legende: "Champs de maïs et falaises de Chartreuse", pos: [45.207, 5.804], circuit: "gresivaudan"},
+  {id: "bv-024", jour: "Jour 2", lieu: "Crolles", legende: "La Dent de Crolles au-dessus de la Belle Via", pos: [45.254, 5.871], circuit: "gresivaudan"},
+  {id: "bv-029", jour: "Jour 2", lieu: "Combe de Savoie", legende: "Les vignes de la Combe de Savoie", pos: [45.500, 6.003]},
+  {id: "bv-035", jour: "Jour 3", lieu: "Lac du Bourget", legende: "Halte au bord du lac du Bourget", pos: [45.691, 5.893]},
+  {id: "bv-042", jour: "Jour 4", lieu: "Vercors", legende: "Les gorges du Vercors", pos: [45.065, 5.495]},
+  {id: "bv-048", jour: "Jour 4", lieu: "Vercors", legende: "Les alpages du plateau", pos: [45.044, 5.476]},
+  {id: "bv-053", jour: "Jour 4", lieu: "Vercors", legende: "Prairies et falaises calcaires", pos: [45.021, 5.449]},
+  {id: "bv-064", jour: "Jour 5", lieu: "Vercors", legende: "Les routes tranquilles du plateau", pos: [44.958, 5.423]},
+  {id: "bv-087", jour: "Jour 6", lieu: "Col du Rousset", legende: "Les lacets du col du Rousset", pos: [44.838, 5.398]},
+  {id: "bv-103", jour: "Jour 7", lieu: "Combe Laval", legende: "La route de Combe Laval", pos: [44.985, 5.333]},
+  {id: "bv-109", jour: "Jour 7", lieu: "Combe Laval", legende: "Une route taillée dans la falaise", pos: [44.996, 5.334]},
+  {id: "bv-113", jour: "Jour 7", lieu: "Combe Laval", legende: "Une mer de nuages sous les falaises", pos: [45.000, 5.334]}
+];
+
+const LIEN_TQA = "https://thequietadventure.com/voyages/belle-via-et-vercors/";
