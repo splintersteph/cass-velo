@@ -3,118 +3,105 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cass à Vélo · Balades et cours de vélo à Grenoble</title>
-<meta name="description" content="Balades touristiques guidées à vélo autour de Grenoble et cours de vélo pour enfants, seniors et personnes à mobilité réduite.">
-<meta name="theme-color" content="#16243b">
-<link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 40 40' aria-hidden='true'><circle cx='20' cy='20' r='18' fill='%23c8d63a'/><path d='M6 27l8-10 5 6 6-9 9 13' fill='none' stroke='%2316243b' stroke-width='2.6' stroke-linejoin='round' stroke-linecap='round'/><circle cx='20' cy='20' r='18' fill='none' stroke='%2316243b' stroke-width='2.6'/></svg>">
+<title>Cass à Vélo, balades et cours de vélo à Grenoble</title>
+<meta name="description" content="Balades guidées à vélo autour de Grenoble et cours de vélo pour enfants, seniors et personnes à mobilité réduite, avec Cassandre.">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%232f5d46'/%3E%3Ctext x='16' y='22' font-family='Georgia' font-size='18' fill='white' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="tete"><div class="wrap">
-  <a class="marque" href="index.html"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="#c8d63a"/><path d="M6 27l8-10 5 6 6-9 9 13" fill="none" stroke="#16243b" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><circle cx="20" cy="20" r="18" fill="none" stroke="#16243b" stroke-width="2.6"/></svg>Cass à Vélo</a>
-  <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-  <nav aria-label="Navigation principale"><ul class="menu"><li><a href="index.html" aria-current="page">Accueil</a></li><li><a href="balades.html">Balades</a></li><li><a href="cours.html">Cours</a></li><li><a href="passeport.html">Passeport Belle Via</a></li><li><a href="index.html#contact">Contact</a></li></ul></nav>
+  <a class="marque" href="index.html">Cass à Vélo</a>
+  <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <nav aria-label="Navigation principale"><ul class="menu"><li><a href="balades.html">Balades</a></li><li><a href="cours.html">Cours</a></li><li><a href="passeport.html">Passeport Belle Via</a></li><li><a href="index.html#contact">Me contacter</a></li></ul></nav>
 </div></header>
 <main>
 
-<section class="ouverture">
-  <div class="wrap ouverture-grille">
-    <div class="ouverture-texte">
-      <p class="bonjour">Bonjour, moi c'est Cass.</p>
-      <h1>Et si on roulait ensemble&nbsp;?</h1>
-      <p class="chapeau">Je vous emmène à vélo autour de Grenoble, à votre rythme. Que vous ayez 6 ans ou 80 ans, que vous n'ayez pas pédalé depuis vingt ans ou que vous rêviez de cols, il y a une sortie pour vous.</p>
-      <div class="actions">
-        <a class="btn btn-chartreuse" href="#contact">Réserver une sortie</a>
-        <a class="btn btn-ligne" href="#offres">Voir ce que je propose</a>
+<section class="heros"><div class="wrap">
+  <div class="heros-image">
+    <img src="img/bv-016.webp" alt="Une piste cyclable sur la digue de l'Isère, face aux montagnes">
+    <div class="heros-texte">
+      <div>
+        <h1>Balades et cours de vélo à Grenoble</h1>
+        <p>Avec Cassandre, pour tous les âges et à votre rythme.</p>
       </div>
-    </div>
-    <figure class="ouverture-video">
-      <video autoplay muted loop playsinline preload="auto" poster="img/balade-affiche.webp" aria-label="Vidéo d'une balade à vélo&nbsp;: allée d'arbres, digue de l'Isère et route de Combe Laval">
-        <source src="img/balade.mp4" type="video/mp4">
-      </video>
-      <figcaption>Nos dernières sorties, de la Belle Via aux falaises du Vercors</figcaption>
-    </figure>
-  </div>
-</section>
-
-<section class="bloc bloc-blanc promesses">
-  <div class="wrap">
-    <h2>Avec moi, vous allez…</h2>
-    <div class="trio">
-      <article><img src="img/bv-064-p.webp" alt="Une route tranquille du Vercors, une cycliste et sa remorque" loading="lazy"><h3>…reprendre confiance</h3><p>On commence là où vous en êtes. Pas de performance, pas de pression&nbsp;: on avance ensemble, et on s'arrête quand on veut.</p></article>
-      <article><img src="img/bv-013-p.webp" alt="Les bulles du téléphérique de la Bastille au coucher du soleil" loading="lazy"><h3>…voir Grenoble autrement</h3><p>Les quais, les bulles de la Bastille, les digues de l'Isère&nbsp;: la ville et ses montagnes se découvrent mieux au rythme du pédalage.</p></article>
-      <article><img src="img/bv-113-p.webp" alt="Une mer de nuages sous les falaises du Vercors" loading="lazy"><h3>…rentrer avec des souvenirs</h3><p>Une mer de nuages, un pique-nique sous les noyers, un tampon de plus sur le passeport. Le genre de journée qu'on raconte longtemps.</p></article>
+      <a class="btn btn-plein" href="#contact">Réserver une sortie</a>
     </div>
   </div>
-</section>
+</div></section>
 
-<section class="bloc" id="offres">
+<section class="bloc">
   <div class="wrap">
     <h2>Ce que je propose</h2>
+    <p class="intro">Des sorties en petit groupe et des cours adaptés à chacun, sur les plus belles voies vertes autour de Grenoble.</p>
     <div class="offres">
-      <a class="offre" href="balades.html"><img src="img/bv-016.webp" alt="" loading="lazy"><div><h3>Balades guidées</h3><p>De 2 heures à la journée, en famille ou entre amis, sur six circuits autour de Grenoble.</p><span>Voir les balades</span></div></a>
-      <a class="offre" href="cours.html#enfants"><img src="img/bv-003.webp" alt="" loading="lazy"><div><h3>Cours pour enfants</h3><p>De la première poussée aux premiers trajets en ville, en jouant.</p><span>Voir les cours enfants</span></div></a>
-      <a class="offre" href="cours.html#seniors"><img src="img/bv-020.webp" alt="" loading="lazy"><div><h3>Seniors et mobilité réduite</h3><p>Se remettre en selle en douceur, essayer le vélo électrique, trouver le vélo adapté.</p><span>Voir l'accompagnement</span></div></a>
+      <a class="offre" href="balades.html"><img src="img/bv-013-p.webp" alt="Les bulles de la Bastille au coucher du soleil" loading="lazy"><h3>Balades guidées</h3><p>De deux heures à la journée, pour découvrir Grenoble, la Belle Via et les massifs autour.</p><span class="lien">Voir les balades</span></a>
+      <a class="offre" href="cours.html#enfants"><img src="img/bv-003-p.webp" alt="Une allée d'arbres sur la Belle Via" loading="lazy"><h3>Cours pour enfants</h3><p>Trouver l'équilibre, apprendre à freiner, puis rouler en sécurité, en jouant.</p><span class="lien">Voir les cours</span></a>
+      <a class="offre" href="cours.html#seniors"><img src="img/bv-064-p.webp" alt="Une route tranquille du Vercors" loading="lazy"><h3>Seniors et mobilité réduite</h3><p>Reprendre le vélo en douceur, essayer l'électrique ou un vélo adapté.</p><span class="lien">Voir l'accompagnement</span></a>
     </div>
   </div>
 </section>
 
-<section class="bloc bloc-blanc">
-  <div class="wrap lettre">
-    <div class="lettre-texte">
-      <h2>Pourquoi je fais ça</h2>
-      <p>Le vélo m'a fait découvrir des endroits que je n'aurais jamais vus autrement. Avec ma famille, on l'a pris pour traverser la Corée du Sud, le Japon, l'Italie, et en 2024 pour descendre la Belle Via jusqu'aux falaises du Vercors, notre fille dans la remorque.</p>
-      <p>Aujourd'hui, je me forme pour devenir monitrice, parce que j'ai envie de partager ça. Voir un enfant lâcher les petites roues, une grand-mère retrouver le plaisir de sortir à vélo, des visiteurs s'arrêter net devant la Chartreuse au coucher du soleil&nbsp;: c'est pour ces moments-là que je pédale.</p>
-      <p>Alors venez rouler avec moi. Je m'occupe du reste.</p>
-      <p class="signature">Cassandre</p>
-      <p class="petit">Nos voyages à vélo sont racontés sur <a class="lien-tqa" href="https://thequietadventure.com/" target="_blank" rel="noopener">The Quiet Adventure</a>.</p>
-    </div>
-    <div class="mosaique">
-      <button type="button" class="mosaique-btn" data-id="bv-009" aria-label="Agrandir&nbsp;: Grenoble et l'Isère depuis la Bastille"><img src="img/bv-009-p.webp" alt="Grenoble et l'Isère depuis la Bastille" loading="lazy"></button><button type="button" class="mosaique-btn" data-id="bv-024" aria-label="Agrandir&nbsp;: La Dent de Crolles au-dessus de la Belle Via"><img src="img/bv-024-p.webp" alt="La Dent de Crolles au-dessus de la Belle Via" loading="lazy"></button><button type="button" class="mosaique-btn" data-id="bv-048" aria-label="Agrandir&nbsp;: Les alpages du plateau"><img src="img/bv-048-p.webp" alt="Les alpages du plateau" loading="lazy"></button><button type="button" class="mosaique-btn" data-id="bv-087" aria-label="Agrandir&nbsp;: Les lacets du col du Rousset"><img src="img/bv-087-p.webp" alt="Les lacets du col du Rousset" loading="lazy"></button><button type="button" class="mosaique-btn" data-id="bv-109" aria-label="Agrandir&nbsp;: Une route taillée dans la falaise"><img src="img/bv-109-p.webp" alt="Une route taillée dans la falaise" loading="lazy"></button><button type="button" class="mosaique-btn" data-id="bv-029" aria-label="Agrandir&nbsp;: Les vignes de la Combe de Savoie"><img src="img/bv-029-p.webp" alt="Les vignes de la Combe de Savoie" loading="lazy"></button>
+<section class="bloc bloc-doux">
+  <div class="wrap apropos">
+    <img src="img/bv-024.webp" alt="La Dent de Crolles au-dessus d'une petite route à vélo" loading="lazy">
+    <div>
+      <h2>Bonjour, je suis Cassandre</h2>
+      <p>Je me forme pour devenir monitrice vélo à Grenoble. Avec ma famille, nous avons voyagé à vélo en Corée du Sud, au Japon, en Italie, et sur la Belle Via jusqu'au Vercors.</p>
+      <p>J'ai envie de partager ce plaisir simple&nbsp;: rouler à son rythme, voir le paysage changer, et rentrer avec le sourire. Que vous ayez 6 ou 80 ans, on trouvera la sortie qui vous va.</p>
+      <p class="signe">Cassandre</p>
     </div>
   </div>
 </section>
 
-<section class="bloc bloc-encre" id="contact">
+<section class="bloc">
+  <div class="wrap">
+    <h2>Quelques souvenirs</h2>
+    <div class="bande"><button type="button" data-id="bv-113" aria-label="Agrandir&nbsp;: Une mer de nuages sous les falaises"><img src="img/bv-113-p.webp" alt="Une mer de nuages sous les falaises" loading="lazy"></button><button type="button" data-id="bv-048" aria-label="Agrandir&nbsp;: Les alpages du plateau"><img src="img/bv-048-p.webp" alt="Les alpages du plateau" loading="lazy"></button><button type="button" data-id="bv-109" aria-label="Agrandir&nbsp;: Une route taillée dans la falaise"><img src="img/bv-109-p.webp" alt="Une route taillée dans la falaise" loading="lazy"></button><button type="button" data-id="bv-029" aria-label="Agrandir&nbsp;: Les vignes de la Combe de Savoie"><img src="img/bv-029-p.webp" alt="Les vignes de la Combe de Savoie" loading="lazy"></button></div>
+    <p class="bande-legende">Notre semaine à vélo sur la Belle Via et dans le Vercors. <a class="lien" href="https://thequietadventure.com/voyages/belle-via-et-vercors/" target="_blank" rel="noopener">Lire le récit sur The Quiet Adventure</a></p>
+  </div>
+</section>
+
+<section class="bloc" id="contact">
   <div class="wrap contact">
     <div>
-      <h2>Envie de pédaler&nbsp;?</h2>
-      <p class="intro">Une question, une date, un groupe&nbsp;? Décrivez votre projet en quelques lignes et je vous réponds pour l'organiser ensemble.</p>
+      <h2>On roule ensemble&nbsp;?</h2>
+      <p class="intro">Dites-moi qui vous êtes et ce dont vous avez envie. Je vous réponds pour organiser la sortie ou le cours.</p>
       <div class="coord">
-        <div><strong>Où</strong>Grenoble et ses environs, départ adapté selon la balade</div>
+        <div><strong>Où</strong>Grenoble et ses environs</div>
         <div><strong>Quand</strong>Toute l'année, selon la météo</div>
         <div><strong>Vélo</strong>Le vôtre, ou une location organisée ensemble</div>
       </div>
     </div>
     <form class="formulaire" id="formulaire">
       <div class="duo">
-        <div><label for="nom">Votre nom</label><input id="nom" name="nom" autocomplete="name" required></div>
-        <div><label for="email">Votre e-mail</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+        <div><label for="nom">Nom</label><input id="nom" name="nom" autocomplete="name" required></div>
+        <div><label for="email">E-mail</label><input id="email" name="email" type="email" autocomplete="email" required></div>
       </div>
-      <fieldset style="border:0">
-        <legend style="font-weight:700;margin-bottom:10px">Ce qui vous intéresse</legend>
+      <fieldset>
+        <legend>Vous êtes intéressé par</legend>
         <div class="choix">
-          <input type="radio" name="demande" id="d1" value="Une balade guidée" checked><label for="d1">Une balade guidée</label>
+          <input type="radio" name="demande" id="d1" value="Une balade guidée" checked><label for="d1">Une balade</label>
           <input type="radio" name="demande" id="d2" value="Des cours pour un enfant"><label for="d2">Cours enfant</label>
           <input type="radio" name="demande" id="d3" value="Des cours ou sorties senior"><label for="d3">Cours senior</label>
           <input type="radio" name="demande" id="d4" value="Un accompagnement mobilité réduite"><label for="d4">Mobilité réduite</label>
-          <input type="radio" name="demande" id="d5" value="Une sortie de groupe"><label for="d5">Groupe, école, association</label>
+          <input type="radio" name="demande" id="d5" value="Une sortie de groupe"><label for="d5">Groupe</label>
         </div>
       </fieldset>
-      <div><label for="message">Votre message</label><textarea id="message" name="message" placeholder="Nombre de personnes, dates souhaitées, niveau, besoins particuliers…"></textarea></div>
-      <div><button class="btn btn-encre" type="submit">Envoyer ma demande</button></div>
+      <div><label for="message">Message</label><textarea id="message" name="message" placeholder="Nombre de personnes, dates, niveau, besoins particuliers…"></textarea></div>
+      <div><button class="btn btn-plein" type="submit">Envoyer ma demande</button></div>
     </form>
   </div>
 </section>
 
 </main>
 <footer class="pied"><div class="wrap">
-  <div><strong>Cass à Vélo</strong><p>Balades guidées et cours de vélo à Grenoble et dans ses environs, pour tous les âges et toutes les envies.</p></div>
-  <div><strong>Le site</strong><ul><li><a href="balades.html">Les balades</a></li><li><a href="cours.html">Les cours</a></li><li><a href="passeport.html">Le passeport Belle Via</a></li></ul></div>
-  <div><strong>Me joindre</strong><ul><li><a href="index.html#contact">Formulaire de contact</a></li><li><a class="lien-mail" href="#">Par e-mail</a></li><li><a href="https://thequietadventure.com/" target="_blank" rel="noopener">Nos voyages&nbsp;: The Quiet Adventure</a></li></ul></div>
+  <div><strong>Cass à Vélo</strong><p>Balades guidées et cours de vélo à Grenoble et dans ses environs, pour tous les âges.</p></div>
+  <div><strong>Le site</strong><ul><li><a href="balades.html">Balades</a></li><li><a href="cours.html">Cours</a></li><li><a href="passeport.html">Passeport Belle Via</a></li></ul></div>
+  <div><strong>Contact</strong><ul><li><a href="index.html#contact">Formulaire</a></li><li><a class="lien-mail" href="#">E-mail</a></li><li><a href="https://thequietadventure.com/" target="_blank" rel="noopener">The Quiet Adventure</a></li></ul></div>
   <p class="bas">© <span class="annee"></span> Cass à Vélo, Grenoble. Fonds de carte © OpenStreetMap et CARTO.</p>
 </div></footer>
 <script src="donnees.js"></script>
