@@ -152,3 +152,99 @@ if (zoneTampons) {
   document.getElementById("raz").addEventListener("click", () => { poses = []; sauver(); afficher(); });
   afficher();
 }
+
+// ---------- Scène « voyage » de l'accueil ----------
+const voyage = document.getElementById("voyage");
+if (voyage) {
+  const scene = voyage.querySelector(".scene");
+  const pistes = [...voyage.querySelectorAll(".piste")].map(el => ({el, f: +el.dataset.f}));
+  const chapitres = [...voyage.querySelectorAll(".chapitre")];
+  const astre = voyage.querySelector(".astre");
+  const etoiles = voyage.querySelector(".etoiles");
+  const km = document.getElementById("km");
+  const avance = document.getElementById("avance");
+  const roues = [...voyage.querySelectorAll(".roue")];
+  const pedalier = voyage.querySelector(".pedalier");
+  const jambeAv = voyage.querySelector(".jambe.avant");
+  const jambeAr = voyage.querySelector(".jambe.arriere");
+  const calme = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Couleurs du ciel au fil de la journée : [progression, haut, bas]
+  const CIEL = [
+    [0, "#f2b48f", "#fde3c6"], [0.28, "#6fb6dc", "#d4edf7"], [0.6, "#5aa7d6", "#dcf0f7"],
+    [0.78, "#ef8a4c", "#f9cd85"], [0.9, "#2e3268", "#c96d5c"], [1, "#0d1634", "#27325f"]
+  ];
+  const hex = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+  const mix = (a, b, t) => "rgb(" + hex(a).map((v, i) => Math.round(v + (hex(b)[i] - v) * t)).join(",") + ")";
+  const lisse = (a, b, x) => Math.min(1, Math.max(0, (x - a) / (b - a)));
+
+  function couleurCiel(p) {
+    for (let i = 1; i < CIEL.length; i++) if (p <= CIEL[i][0]) {
+      const [p0, h0, b0] = CIEL[i - 1], [p1, h1, b1] = CIEL[i];
+      const t = (p - p0) / (p1 - p0);
+      return [mix(h0, h1, t), mix(b0, b1, t)];
+    }
+    return [CIEL.at(-1)[1], CIEL.at(-1)[2]];
+  }
+
+  // Jambe : de la hanche à la pédale, genou calculé (cinématique inverse simple)
+  const HANCHE = [86, 64], L = 40, PEDALIER = [96, 128], R = 15;
+  function jambe(angle) {
+    const pied = [PEDALIER[0] + R * Math.cos(angle), PEDALIER[1] + R * Math.sin(angle)];
+    const dx = pied[0] - HANCHE[0], dy = pied[1] - HANCHE[1];
+    const d = Math.min(Math.hypot(dx, dy), 2 * L - 0.01);
+    const h = Math.sqrt(L * L - (d / 2) ** 2);
+    const mx = HANCHE[0] + dx / 2, my = HANCHE[1] + dy / 2;
+    const n1 = [mx - h * dy / d, my + h * dx / d], n2 = [mx + h * dy / d, my - h * dx / d];
+    const k = n1[0] > n2[0] ? n1 : n2; // le genou part vers l'avant (côté guidon)
+    return { d: `M${HANCHE[0]} ${HANCHE[1]} L${k[0].toFixed(1)} ${k[1].toFixed(1)} L${pied[0].toFixed(1)} ${pied[1].toFixed(1)}`, pied };
+  }
+
+  let enAttente = false;
+  function rendre() {
+    enAttente = false;
+    const course = voyage.offsetHeight - scene.offsetHeight;
+    const p = calme ? 0.3 : Math.min(1, Math.max(0, (scrollY - voyage.offsetTop + 72) / course));
+    const vw = innerWidth / 100;
+
+    pistes.forEach(({el, f}) => el.style.transform = `translate3d(${-p * f * 300 * vw}px,0,0)`);
+    scene.style.setProperty("--route-x", `${-p * 300 * vw}px`);
+
+    const [haut, bas] = couleurCiel(p);
+    scene.style.setProperty("--ciel-haut", haut);
+    scene.style.setProperty("--ciel-bas", bas);
+    scene.style.setProperty("--nuit", (lisse(0.74, 1, p) * 0.5).toFixed(3));
+    scene.style.setProperty("--lumieres", lisse(0.8, 0.95, p).toFixed(2));
+    scene.style.setProperty("--texte-scene", p > 0.86 ? "#ffffff" : "#16243b");
+    etoiles.style.opacity = lisse(0.88, 1, p);
+
+    // Le soleil traverse le ciel puis se couche ; la lune le remplace
+    const t = Math.min(p / 0.9, 1);
+    const x = 55 + t * 38, y = 64 - Math.sin(Math.PI * t) * 50;
+    if (p < 0.9) {
+      astre.style.background = mix("#fff6d0", "#ffb36b", lisse(0.6, 0.88, p));
+      astre.style.transform = `translate(${(x - 70) * vw}px, ${(y - 60) * scene.offsetHeight / 100}px)`;
+      astre.style.opacity = 1;
+    } else {
+      astre.style.background = "#f4f1e0";
+      astre.style.transform = `translate(${(84 - 70) * vw}px, ${(12 - 60) * scene.offsetHeight / 100}px) scale(.6)`;
+      astre.style.opacity = lisse(0.9, 0.97, p);
+    }
+
+    chapitres.forEach(c => c.classList.toggle("visible", p >= +c.dataset.de && p < +c.dataset.a));
+    km.textContent = Math.round(p * 42);
+    avance.style.width = `${p * 100}%`;
+
+    // Roues et pédalage
+    const tourRoue = p * 360 * 70, tourPedale = p * Math.PI * 2 * 48;
+    roues.forEach(r => r.querySelector(".rayons").setAttribute("transform", `rotate(${tourRoue} ${r.dataset.cx} ${r.dataset.cy})`));
+    const a = jambe(tourPedale), b = jambe(tourPedale + Math.PI);
+    jambeAv.setAttribute("d", a.d);
+    jambeAr.setAttribute("d", b.d);
+    pedalier.setAttribute("d", `M${a.pied[0].toFixed(1)} ${a.pied[1].toFixed(1)} L${b.pied[0].toFixed(1)} ${b.pied[1].toFixed(1)}`);
+  }
+  const demander = () => { if (!enAttente) { enAttente = true; requestAnimationFrame(rendre); } };
+  addEventListener("scroll", demander, {passive: true});
+  addEventListener("resize", demander);
+  rendre();
+}

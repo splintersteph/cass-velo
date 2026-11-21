@@ -211,7 +211,7 @@ textarea{min-height:140px;resize:vertical}
 
 /* ---------- Mobile ---------- */
 @media (max-width:960px){
-  .heros .wrap,.territoire,.portrait-bloc,.contact,.passeport-zone,.programme{grid-template-columns:1fr}
+  .territoire,.portrait-bloc,.contact,.passeport-zone,.programme{grid-template-columns:1fr}
   .apercu,.formules{grid-template-columns:1fr}
   .formule+.formule{border-left:0;border-top:2px solid var(--encre)}
   .explorateur{grid-template-columns:1fr;height:auto}
@@ -232,3 +232,57 @@ textarea{min-height:140px;resize:vertical}
   .tampons{grid-template-columns:repeat(4,1fr)}
   .bloc{padding:76px 0}
 }
+
+/* ================= Scène « voyage » de l'accueil ================= */
+.voyage{height:520vh;position:relative;background:var(--encre)}
+.scene{position:sticky;top:72px;height:calc(100vh - 72px);min-height:520px;overflow:hidden}
+.ciel{position:absolute;inset:0;background:linear-gradient(180deg,var(--ciel-haut,#f3c9a4),var(--ciel-bas,#fbe7cf))}
+.etoiles{position:absolute;inset:0 0 40% 0;opacity:0;background-image:radial-gradient(1.5px 1.5px at 12% 18%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 28% 8%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 46% 26%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 63% 12%,#fff 50%,transparent 51%),radial-gradient(2px 2px at 78% 22%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 90% 6%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 36% 34%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 84% 38%,#fff 50%,transparent 51%)}
+.astre{position:absolute;width:clamp(70px,9vw,130px);aspect-ratio:1;border-radius:50%;background:#fff3c4;box-shadow:0 0 80px 30px rgba(255,236,170,.45);left:70%;top:60%;will-change:transform}
+.couches{position:absolute;inset:0}
+.piste{position:absolute;left:0;bottom:0;width:400vw;height:100%;will-change:transform}
+.couche-svg{position:absolute;left:0;width:100%}
+.couche-svg.loin{bottom:16%;height:62%}
+.couche-svg.milieu{bottom:15%;height:48%}
+.couche-svg.proche{bottom:14%;height:34%}
+.couche-div{position:absolute;inset:0}
+.obj{position:absolute;bottom:14%}
+.bastille{height:30vh;width:auto}
+.perret{height:40vh;width:auto}
+.ville{height:16vh}
+.ville .fenetre{fill:#f7d77a;opacity:var(--lumieres,0)}
+.noyer{width:auto}
+.isere{position:absolute;left:0;right:0;bottom:11%;height:3.2%;background:linear-gradient(90deg,#3c86a8,#5aa3c2,#3c86a8);opacity:.95}
+.route{position:absolute;left:0;right:0;bottom:0;height:11%;background:#22355a;border-top:4px solid #16243b}
+.route::after{content:"";position:absolute;left:0;right:0;top:46%;height:4px;background:repeating-linear-gradient(90deg,var(--chartreuse) 0 46px,transparent 46px 96px);background-position-x:var(--route-x,0)}
+.voile{position:absolute;inset:0;background:#0f1a3a;opacity:var(--nuit,0);mix-blend-mode:multiply;pointer-events:none}
+.cycliste{position:absolute;left:18vw;bottom:calc(11% - 6px);width:clamp(150px,17vw,250px);height:auto;z-index:3}
+.recit{position:absolute;left:0;right:0;top:0;padding:6vh 28px 0;max-width:1180px;margin:0 auto;z-index:4}
+.chapitre{position:absolute;left:28px;right:28px;max-width:640px;opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s;pointer-events:none;color:var(--texte-scene,#16243b)}
+.chapitre.visible{opacity:1;transform:none;pointer-events:auto}
+.chapitre h1{font-size:clamp(3.6rem,10vw,8.6rem);font-weight:800;letter-spacing:-.05em;line-height:.88}
+.chapitre h2{font-size:clamp(2.4rem,5.6vw,4.6rem);font-weight:800;letter-spacing:-.04em;line-height:.95}
+.chapitre p{font-size:clamp(1.1rem,1.6vw,1.35rem);margin-top:18px;max-width:40ch}
+.chapitre .heure{font-family:var(--titre);font-weight:700;font-size:1.2rem;margin:0 0 6px;opacity:.75}
+.chapitre .indice{font-size:1rem;opacity:.8;display:flex;align-items:center;gap:10px;margin-top:34px}
+.chapitre .indice::before{content:"";width:22px;height:34px;border:2.5px solid currentColor;border-radius:12px;background:linear-gradient(currentColor,currentColor) 50% 7px/3px 7px no-repeat;animation:molette 1.6s infinite}
+@keyframes molette{50%{background-position:50% 15px}}
+.chapitre .actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+.compteur{position:absolute;right:28px;bottom:calc(11% + 18px);font-family:var(--titre);font-weight:700;color:var(--texte-scene,#16243b);font-size:1.1rem;z-index:4}
+.compteur strong{font-size:clamp(2.6rem,5vw,4.2rem);font-weight:800;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.avance{position:absolute;left:0;right:0;bottom:0;height:5px;z-index:5}
+.avance b{display:block;height:100%;width:0;background:var(--chartreuse)}
+
+@media (max-width:760px){
+  .voyage{height:440vh}
+  .cycliste{left:6vw;width:132px}
+  .bastille{height:22vh}.perret{height:30vh}
+  .compteur{right:20px}
+  .recit{padding-top:4vh}
+}
+@media (prefers-reduced-motion:reduce){
+  .voyage{height:auto}
+  .scene{position:relative;top:0;height:calc(100vh - 72px)}
+  .chapitre{transition:none}
+}
+.chapitre.fin p{text-shadow:0 1px 12px rgba(13,22,52,.9)}
