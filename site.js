@@ -342,3 +342,9 @@ if ((rev || carnet) && !calmeGlobal) {
   rev.style.setProperty("--rev-y", "0%"); rev.style.setProperty("--rev-x", "0%");
   rev.style.setProperty("--rev-s", "1"); rev.style.setProperty("--rev-t", "1");
 }
+
+// Mosaïque de l'accueil : ouvre la visionneuse
+document.querySelectorAll(".mosaique-btn").forEach((b, i, tous) => b.addEventListener("click", () => {
+  const liste = [...tous].map(x => PHOTOS.find(p => p.id === x.dataset.id));
+  ouvrirPhoto(liste, i);
+}));
