@@ -1,0 +1,234 @@
+/* Cass à Vélo — feuille de style commune
+   Palette inspirée du pays grenoblois : encre des nuits alpines,
+   vert Chartreuse, bleu Isère, brun des noyeraies. */
+:root{
+  --encre:#16243b;
+  --encre-2:#22355a;
+  --glacier:#eef3f1;
+  --papier:#ffffff;
+  --chartreuse:#c8d63a;
+  --chartreuse-fonce:#8f9a1c;
+  --isere:#3c86a8;
+  --noyer:#7a5233;
+  --texte:#1b2433;
+  --doux:#566173;
+  --trait:#d5dfdb;
+  --titre:"Bricolage Grotesque",system-ui,sans-serif;
+  --corps:"Atkinson Hyperlegible",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{font-family:var(--corps);font-size:1.125rem;line-height:1.65;color:var(--texte);background:var(--glacier)}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--chartreuse);outline-offset:3px;border-radius:4px}
+h1,h2,h3,h4{font-family:var(--titre);line-height:1.05;letter-spacing:-.02em;font-weight:700}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.mesure{max-width:62ch}
+
+/* ---------- En-tête ---------- */
+.tete{position:sticky;top:0;z-index:50;background:var(--encre);color:#fff}
+.tete .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.marque{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--titre);font-weight:800;font-size:1.4rem;letter-spacing:-.03em}
+.marque svg{width:40px;height:40px}
+.menu{display:flex;gap:6px;list-style:none}
+.menu a{display:block;padding:8px 14px;border-radius:999px;text-decoration:none;font-size:1rem;color:#d9e2ee}
+.menu a:hover{background:var(--encre-2);color:#fff}
+.menu a[aria-current=page]{background:var(--chartreuse);color:var(--encre);font-weight:700}
+.burger{display:none;background:none;border:0;color:#fff;cursor:pointer;padding:8px}
+.burger svg{width:28px;height:28px}
+
+/* ---------- Boutons ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border-radius:999px;font-family:var(--titre);font-weight:700;font-size:1.05rem;text-decoration:none;border:2px solid transparent;cursor:pointer}
+.btn-chartreuse{background:var(--chartreuse);color:var(--encre)}
+.btn-chartreuse:hover{background:#d8e54f}
+.btn-ligne{border-color:currentColor}
+.btn-encre{background:var(--encre);color:#fff}
+.btn-encre:hover{background:var(--encre-2)}
+
+/* ---------- Héros accueil ---------- */
+.heros{background:var(--encre);color:#fff;position:relative;overflow:hidden}
+.heros .wrap{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:40px;align-items:center;padding-top:64px;padding-bottom:72px}
+.heros h1{font-size:clamp(3rem,7.4vw,6.4rem);font-weight:800;letter-spacing:-.045em;line-height:.92}
+.heros h1 .ligne2{display:block;color:transparent;-webkit-text-stroke:2px var(--chartreuse)}
+.heros p.chapeau{font-size:1.3rem;color:#c9d4e3;margin:28px 0 36px;max-width:34ch}
+.heros .actions{display:flex;flex-wrap:wrap;gap:14px}
+.carte-topo{width:100%;height:auto}
+.carte-topo .courbe{fill:none;stroke:#3a5177;stroke-width:1.2}
+.carte-topo .courbe.fine{stroke:#2b3f63;stroke-width:1}
+.carte-topo .riviere{fill:none;stroke:var(--isere);stroke-width:7;stroke-linecap:round;opacity:.9}
+.carte-topo .route{fill:none;stroke:var(--chartreuse);stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1400;stroke-dashoffset:1400;animation:tracer 4.5s .4s ease-in-out forwards}
+.carte-topo .massif{font-family:var(--titre);font-weight:600;font-size:15px;fill:#8aa0c2;letter-spacing:.02em}
+.carte-topo .ville{font-family:var(--titre);font-weight:800;font-size:19px;fill:#fff}
+@keyframes tracer{to{stroke-dashoffset:0}}
+
+/* ---------- Sections ---------- */
+.bloc{padding:104px 0}
+.bloc-blanc{background:var(--papier)}
+.bloc-encre{background:var(--encre);color:#fff}
+.bloc h2{font-size:clamp(2.2rem,4.6vw,3.6rem);margin-bottom:22px}
+.bloc .intro{font-size:1.2rem;color:var(--doux);max-width:58ch;margin-bottom:56px}
+.bloc-encre .intro{color:#c9d4e3}
+
+/* Publics : liste éditoriale en deux colonnes plutôt que des cartes */
+.publics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:2px solid var(--encre)}
+.public{padding:36px 36px 40px 0;border-bottom:1px solid var(--trait);display:grid;grid-template-columns:72px 1fr;gap:22px}
+.public:nth-child(odd){border-right:1px solid var(--trait)}
+.public:nth-child(even){padding-left:36px}
+.public svg{width:64px;height:64px}
+.public h3{font-size:1.65rem;margin-bottom:10px}
+.public p{color:var(--doux)}
+.public a{display:inline-block;margin-top:14px;font-weight:700;color:var(--encre);text-decoration-color:var(--chartreuse);text-decoration-thickness:3px;text-underline-offset:5px}
+
+/* Bandeau chiffres-clés du territoire */
+.territoire{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:center}
+.faits{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:#2b3f63;border-radius:6px;overflow:hidden}
+.fait{background:var(--encre);padding:28px}
+.fait strong{display:block;font-family:var(--titre);font-size:2.6rem;color:var(--chartreuse);line-height:1;margin-bottom:8px}
+.fait span{color:#c9d4e3;font-size:1rem}
+
+/* Aperçu balades */
+.apercu{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.vignette{background:var(--papier);border-radius:6px;overflow:hidden;border:1px solid var(--trait);display:flex;flex-direction:column}
+.vignette .trace{height:150px;background:var(--glacier)}
+.vignette .trace svg{width:100%;height:100%}
+.vignette .contenu{padding:24px 26px 28px;display:flex;flex-direction:column;flex:1}
+.vignette h3{font-size:1.4rem;margin:10px 0 8px}
+.vignette p{color:var(--doux);font-size:1rem;flex:1}
+.niveau{display:inline-flex;align-items:center;gap:8px;font-size:.92rem;font-weight:700}
+.niveau i{display:inline-flex;gap:3px}
+.niveau i b{width:9px;height:18px;border-radius:2px;background:var(--trait)}
+.niveau i b.on{background:var(--encre)}
+.chiffres{display:flex;gap:18px;margin-top:16px;font-size:.95rem;color:var(--texte)}
+.chiffres span{border-top:2px solid var(--chartreuse);padding-top:6px}
+
+/* Qui suis-je */
+.portrait-bloc{display:grid;grid-template-columns:360px 1fr;gap:72px;align-items:center}
+.portrait{aspect-ratio:4/5;border-radius:180px 180px 8px 8px;background:var(--chartreuse);position:relative;overflow:hidden;display:grid;place-items:end center}
+.portrait svg{width:88%}
+.portrait-bloc h2{font-size:clamp(2.2rem,4.6vw,3.4rem)}
+.portrait-bloc p{margin-bottom:16px}
+.engagements{list-style:none;margin-top:26px;display:grid;gap:12px}
+.engagements li{display:flex;gap:14px;align-items:flex-start}
+.engagements li::before{content:"";flex:none;width:22px;height:22px;margin-top:4px;border-radius:50%;background:var(--chartreuse) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2316243b' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12l4 4 8-8'/%3E%3C/svg%3E") center/14px no-repeat}
+
+/* Contact */
+.contact{display:grid;grid-template-columns:1fr 1.2fr;gap:64px}
+.formulaire{background:var(--papier);color:var(--texte);border-radius:6px;padding:40px;display:grid;gap:18px}
+.formulaire .duo{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+label{display:block;font-weight:700;font-size:1rem;margin-bottom:6px}
+input,select,textarea{width:100%;padding:14px 16px;font:inherit;font-size:1.05rem;border:2px solid var(--trait);border-radius:6px;background:#fbfcfb;color:var(--texte)}
+input:focus,select:focus,textarea:focus{border-color:var(--encre);outline:none}
+textarea{min-height:140px;resize:vertical}
+.choix{display:flex;flex-wrap:wrap;gap:10px}
+.choix input{position:absolute;opacity:0;width:1px;height:1px}
+.choix label{margin:0;padding:9px 16px;border:2px solid var(--trait);border-radius:999px;font-weight:400;cursor:pointer}
+.choix input:checked+label{background:var(--encre);border-color:var(--encre);color:#fff}
+.choix input:focus-visible+label{outline:3px solid var(--chartreuse);outline-offset:2px}
+.coord{margin-top:32px;display:grid;gap:14px;color:#c9d4e3}
+.coord strong{color:#fff;display:block;font-family:var(--titre);font-size:1.1rem}
+
+/* ---------- En-tête de page intérieure ---------- */
+.entete-page{background:var(--encre);color:#fff;padding:80px 0 72px}
+.entete-page h1{font-size:clamp(2.8rem,6.4vw,5.2rem);font-weight:800;letter-spacing:-.04em;max-width:16ch}
+.entete-page p{font-size:1.25rem;color:#c9d4e3;margin-top:22px;max-width:56ch}
+
+/* ---------- Page balades ---------- */
+.explorateur{display:grid;grid-template-columns:420px 1fr;height:calc(100vh - 72px);min-height:620px;background:var(--papier)}
+.liste-circuits{overflow-y:auto;border-right:1px solid var(--trait)}
+.filtres{position:sticky;top:0;background:var(--papier);padding:20px 24px;border-bottom:1px solid var(--trait);display:flex;gap:8px;flex-wrap:wrap;z-index:2}
+.filtres button{font:inherit;font-size:.95rem;padding:7px 15px;border-radius:999px;border:2px solid var(--trait);background:none;cursor:pointer;color:var(--texte)}
+.filtres button[aria-pressed=true]{background:var(--encre);border-color:var(--encre);color:#fff}
+.circuit{padding:24px;border-bottom:1px solid var(--trait);cursor:pointer;border-left:6px solid transparent}
+.circuit:hover{background:#f6f9f7}
+.circuit.actif{border-left-color:var(--chartreuse);background:#f6f9f7}
+.circuit h3{font-size:1.3rem;margin:8px 0 6px}
+.circuit p{font-size:1rem;color:var(--doux)}
+.circuit .etapes{margin-top:12px;font-size:.95rem;color:var(--texte);display:none}
+.circuit.actif .etapes{display:block}
+.circuit .etapes li{margin-left:18px}
+#carte{height:100%;width:100%}
+.note-carte{font-size:.9rem;color:var(--doux);padding:16px 24px}
+.leaflet-container{font-family:var(--corps)}
+
+.formules{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:2px solid var(--encre);border-radius:6px;overflow:hidden}
+.formule{padding:36px 32px;background:var(--papier)}
+.formule+.formule{border-left:2px solid var(--encre)}
+.formule h3{font-size:1.8rem;margin:14px 0 10px}
+.formule dl{margin-top:18px;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:1rem}
+.formule dt{color:var(--doux)}
+.formule dd{font-weight:700}
+.formule.mise-en-avant{background:var(--encre);color:#fff}
+.formule.mise-en-avant dt{color:#9fb0c8}
+.formule.mise-en-avant .niveau i b{background:#3a5177}
+.formule.mise-en-avant .niveau i b.on{background:var(--chartreuse)}
+
+/* ---------- Page cours ---------- */
+.programme{display:grid;grid-template-columns:320px 1fr;gap:64px;padding:72px 0;border-bottom:1px solid var(--trait)}
+.programme:last-child{border-bottom:0}
+.programme .cote h2{font-size:clamp(2rem,3.6vw,2.8rem);margin:18px 0 14px}
+.programme .cote svg{width:96px;height:96px}
+.programme .cote p{color:var(--doux)}
+.progression{list-style:none;counter-reset:etape;display:grid;gap:0}
+.progression li{counter-increment:etape;display:grid;grid-template-columns:64px 1fr;gap:20px;padding:22px 0;border-top:1px solid var(--trait);position:relative}
+.progression li::before{content:counter(etape);font-family:var(--titre);font-weight:800;font-size:1.4rem;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--glacier);color:var(--encre);border:2px solid var(--encre)}
+.progression h3{font-size:1.3rem;margin-bottom:4px}
+.progression p{color:var(--doux);font-size:1.02rem}
+.encadre{margin-top:26px;background:var(--glacier);border-left:6px solid var(--chartreuse);padding:20px 24px;border-radius:0 6px 6px 0;font-size:1.02rem}
+
+/* ---------- Page passeport ---------- */
+.passeport-zone{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:56px;align-items:start}
+.livret{background:#24365a;border-radius:10px 22px 22px 10px;padding:14px;box-shadow:0 30px 60px -20px rgba(22,36,59,.55);position:sticky;top:100px}
+.livret-page{background:#f8f6ee;border-radius:6px 16px 16px 6px;padding:30px;background-image:repeating-linear-gradient(0deg,transparent 0 31px,#ebe6d6 31px 32px)}
+.livret-page header{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--encre);padding-bottom:12px;margin-bottom:22px}
+.livret-page header h2{font-size:1.6rem}
+.livret-page header span{font-size:.95rem;color:var(--doux)}
+.tampons{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.tampon{aspect-ratio:1;border-radius:50%;border:2px dashed #b9b29c;background:none;cursor:pointer;display:grid;place-items:center;text-align:center;font-family:var(--titre);font-size:.66rem;font-weight:700;line-height:1.1;color:#8f8872;padding:6px;transition:transform .25s}
+.tampon:hover{border-color:var(--encre);color:var(--encre)}
+.tampon.pose{border:3px double var(--noyer);color:var(--noyer);background:rgba(122,82,51,.08);transform:rotate(var(--r,-10deg))}
+.tampon.pose.vient{animation:coup .35s ease-out}
+@keyframes coup{0%{transform:scale(1.6) rotate(0);opacity:0}70%{transform:scale(.92) rotate(var(--r,-10deg));opacity:1}100%{transform:scale(1) rotate(var(--r,-10deg))}}
+.progres{margin-top:22px;display:flex;align-items:center;gap:14px;font-size:1rem}
+.progres .barre{flex:1;height:10px;border-radius:99px;background:#e2ddcc;overflow:hidden}
+.progres .barre b{display:block;height:100%;width:0;background:var(--chartreuse-fonce);transition:width .4s}
+.raz{background:none;border:0;font:inherit;font-size:.92rem;color:var(--doux);text-decoration:underline;cursor:pointer;margin-top:12px}
+#carte-via{height:380px;border-radius:6px;border:1px solid var(--trait);margin:28px 0}
+.etapes-via{list-style:none;display:grid;gap:0;border-top:2px solid var(--encre)}
+.etapes-via li{display:grid;grid-template-columns:1fr auto;gap:12px;padding:14px 0;border-bottom:1px solid var(--trait);align-items:baseline}
+.etapes-via li span{color:var(--doux);font-size:.98rem}
+.etapes-via li.fait-etape strong{color:var(--noyer)}
+
+/* ---------- Pied ---------- */
+.pied{background:#0f1a2c;color:#9fb0c8;padding:56px 0 40px;font-size:1rem}
+.pied .wrap{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+.pied strong{color:#fff;font-family:var(--titre);font-size:1.2rem;display:block;margin-bottom:10px}
+.pied ul{list-style:none;display:grid;gap:6px}
+.pied a{text-decoration:none}
+.pied a:hover{color:#fff}
+.pied .bas{grid-column:1/-1;border-top:1px solid #22355a;padding-top:22px;margin-top:10px;font-size:.92rem}
+
+/* ---------- Mobile ---------- */
+@media (max-width:960px){
+  .heros .wrap,.territoire,.portrait-bloc,.contact,.passeport-zone,.programme{grid-template-columns:1fr}
+  .apercu,.formules{grid-template-columns:1fr}
+  .formule+.formule{border-left:0;border-top:2px solid var(--encre)}
+  .explorateur{grid-template-columns:1fr;height:auto}
+  #carte{height:56vh}
+  .liste-circuits{border-right:0;order:2}
+  .portrait{max-width:300px}
+  .livret{position:static}
+  .pied .wrap{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .menu{display:none;position:absolute;top:72px;left:0;right:0;background:var(--encre);flex-direction:column;padding:12px 20px 20px}
+  .menu.ouvert{display:flex}
+  .burger{display:block}
+  .publics{grid-template-columns:1fr}
+  .public,.public:nth-child(even){padding:28px 0;border-right:0}
+  .formulaire .duo{grid-template-columns:1fr}
+  .formulaire{padding:26px}
+  .tampons{grid-template-columns:repeat(4,1fr)}
+  .bloc{padding:76px 0}
+}
