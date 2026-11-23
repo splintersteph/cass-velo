@@ -1,0 +1,18 @@
+name: Telecharger les photos candidates
+on:
+  push:
+    branches: [photos-tri]
+permissions:
+  contents: write
+jobs:
+  photos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 telecharger.py
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add photos
+          git commit -m "Photos candidates" || echo rien
+          git push
