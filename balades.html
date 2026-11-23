@@ -3,10 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Les balades, Cass à Vélo</title>
-<meta name="description" content="Six balades guidées à vélo autour de Grenoble sur une carte interactive.">
-<meta name="theme-color" content="#ffffff">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%232f5d46'/%3E%3Ctext x='16' y='22' font-family='Georgia' font-size='18' fill='white' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
+<title>Les balades | Cass à Vélo</title>
+<meta name="description" content="Six balades guidées à vélo autour de Grenoble, sur carte interactive&nbsp;: quais, JO 1968, Belle Via, Vizille, Chartreuse.">
+<link rel="canonical" href="https://splintersteph.github.io/cass-velo/balades.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Les balades | Cass à Vélo">
+<meta property="og:description" content="Six balades guidées à vélo autour de Grenoble, sur carte interactive&nbsp;: quais, JO 1968, Belle Via, Vizille, Chartreuse.">
+<meta property="og:url" content="https://splintersteph.github.io/cass-velo/balades.html">
+<meta property="og:image" content="https://splintersteph.github.io/cass-velo/img/bv-017.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#fbfbf9">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%231c1f1d'/%3E%3Ctext x='16' y='23' font-family='Georgia' font-size='20' fill='white' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -16,81 +24,54 @@
 <body>
 <header class="tete"><div class="wrap">
   <a class="marque" href="index.html">Cass à Vélo</a>
-  <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-  <nav aria-label="Navigation principale"><ul class="menu"><li><a href="balades.html" aria-current=page>Balades</a></li><li><a href="cours.html">Cours</a></li><li><a href="passeport.html">Passeport Belle Via</a></li><li><a href="index.html#contact">Me contacter</a></li></ul></nav>
+  <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg></button>
+  <nav aria-label="Navigation principale"><ul class="menu"><li><a href="balades.html" aria-current=page>Balades</a></li><li><a href="enfants.html">Enfants</a></li><li><a href="seniors.html">Seniors</a></li><li><a href="groupes.html">Groupes</a></li><li><a href="index.html#contact">Réserver</a></li></ul></nav>
 </div></header>
 <main>
 
-<section class="entete-page"><div class="wrap"><div class="cadre" style="--photo:url(img/bv-018.webp)">
-  <div class="texte"><h1>Six balades autour de Grenoble</h1><p>Choisissez une balade pour la voir sur la carte. Chaque sortie s'adapte au groupe et à la météo.</p></div>
-</div></div></section>
-<section class="bloc" style="padding-top:56px">
-  <div class="wrap">
-    <div class="explorateur" aria-label="Carte des balades">
-      <div class="liste-circuits">
-        <div class="filtres" role="group" aria-label="Filtrer par niveau">
-          <button aria-pressed="true" data-niveau="0">Toutes</button>
-          <button aria-pressed="false" data-niveau="1">Tranquille</button>
-          <button aria-pressed="false" data-niveau="2">Découverte</button>
-          <button aria-pressed="false" data-niveau="3">Évasion</button>
-        </div>
-        <div id="circuits"></div>
-        <p class="note-carte">Tracés indicatifs, confirmés avant chaque sortie. Les ronds sur la carte sont nos photos.</p>
+<section class="entete-page"><div class="wrap">
+  <div class="titre"><div><p class="surtitre">Balades guidées</p><h1>Grenoble et ses montagnes, à vélo</h1></div><p class="chapeau">Six balades, de la vieille ville aux balcons de Chartreuse. Choisissez-en une pour la voir sur la carte&nbsp;: chaque sortie s'adapte au groupe et à la météo.</p></div>
+  <div class="grande"><img src="img/bv-017.webp" alt="L'Isère et la chaîne de Belledonne depuis la digue de la Belle Via"></div>
+</div></section>
+<section class="section" style="padding-top:96px"><div class="wrap">
+  <div class="explorateur" aria-label="Carte des balades">
+    <div class="liste-circuits">
+      <div class="filtres" role="group" aria-label="Filtrer par niveau">
+        <button aria-pressed="true" data-niveau="0">Toutes</button>
+        <button aria-pressed="false" data-niveau="1">Tranquille</button>
+        <button aria-pressed="false" data-niveau="2">Découverte</button>
+        <button aria-pressed="false" data-niveau="3">Évasion</button>
       </div>
-      <div id="carte"></div>
+      <div id="circuits"></div>
+      <p class="note-carte">Tracés indicatifs, confirmés avant chaque sortie. Les ronds sur la carte sont nos photos.</p>
     </div>
+    <div id="carte"></div>
   </div>
-</section>
-<section class="bloc bloc-doux">
-  <div class="wrap">
-    <h2>Trouver son niveau</h2>
-    <p class="intro">La plupart des balades se font à plat. Avec un vélo électrique, les balades Évasion deviennent accessibles à presque tout le monde.</p>
-    <div class="formules">
-      <div class="formule"><span class="niveau"><i aria-hidden="true"><b class="on"></b><b class=""></b><b class=""></b></i>Tranquille</span><h3>Tranquille</h3><p>Pour les débutants, les familles et celles et ceux qui veulent surtout profiter du paysage.</p><dl><dt>Durée</dt><dd>2 h à 2 h 30</dd><dt>Distance</dt><dd>moins de 15 km</dd><dt>Dénivelé</dt><dd>quasi nul</dd></dl></div>
-      <div class="formule mise-en-avant"><span class="niveau"><i aria-hidden="true"><b class="on"></b><b class="on"></b><b class=""></b></i>Découverte</span><h3>Découverte</h3><p>Pour sortir de la ville et rejoindre la Belle Via ou les châteaux.</p><dl><dt>Durée</dt><dd>demi-journée</dd><dt>Distance</dt><dd>25 à 40 km</dd><dt>Dénivelé</dt><dd>faible</dd></dl></div>
-      <div class="formule"><span class="niveau"><i aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b></i>Évasion</span><h3>Évasion</h3><p>Pour les jambes entraînées, ou en vélo électrique&nbsp;: cols et grands panoramas.</p><dl><dt>Durée</dt><dd>journée</dd><dt>Distance</dt><dd>35 km et plus</dd><dt>Dénivelé</dt><dd>jusqu'à 900 m</dd></dl></div>
-    </div>
+</div></section>
+<section class="section section-pierre"><div class="wrap">
+  <div class="tete-section"><h2 class="apparait">Trouver son niveau</h2><p class="chapeau">La plupart des balades se font à plat. Avec un vélo électrique, les balades Évasion deviennent accessibles à presque tout le monde.</p></div>
+  <div class="formules">
+    <div class="formule"><span class="niveau"><i aria-hidden="true"><b class="on"></b><b class=""></b><b class=""></b></i>Tranquille</span><h3>Tranquille</h3><p>Pour les débutants, les familles et celles et ceux qui veulent surtout profiter du paysage.</p><dl><div><dt>Durée</dt><dd>2 h à 2 h 30</dd></div><div><dt>Distance</dt><dd>moins de 15 km</dd></div><div><dt>Dénivelé</dt><dd>quasi nul</dd></div></dl></div>
+    <div class="formule"><span class="niveau"><i aria-hidden="true"><b class="on"></b><b class="on"></b><b class=""></b></i>Découverte</span><h3>Découverte</h3><p>Pour sortir de la ville et rejoindre la Belle Via, les vergers ou le château de Vizille.</p><dl><div><dt>Durée</dt><dd>demi-journée</dd></div><div><dt>Distance</dt><dd>25 à 40 km</dd></div><div><dt>Dénivelé</dt><dd>faible</dd></div></dl></div>
+    <div class="formule"><span class="niveau"><i aria-hidden="true"><b class="on"></b><b class="on"></b><b class="on"></b></i>Évasion</span><h3>Évasion</h3><p>Pour les jambes entraînées ou en vélo électrique&nbsp;: cols, balcons et grands panoramas.</p><dl><div><dt>Durée</dt><dd>journée</dd></div><div><dt>Distance</dt><dd>35 km et plus</dd></div><div><dt>Dénivelé</dt><dd>jusqu'à 900 m</dd></div></dl></div>
   </div>
-</section>
-
-<section class="bloc" id="contact">
-  <div class="wrap contact">
-    <div>
-      <h2>On roule ensemble&nbsp;?</h2>
-      <p class="intro">Dites-moi qui vous êtes et ce dont vous avez envie. Je vous réponds pour organiser la sortie ou le cours.</p>
-      <div class="coord">
-        <div><strong>Où</strong>Grenoble et ses environs</div>
-        <div><strong>Quand</strong>Toute l'année, selon la météo</div>
-        <div><strong>Vélo</strong>Le vôtre, ou une location organisée ensemble</div>
-      </div>
-    </div>
-    <form class="formulaire" id="formulaire">
-      <div class="duo">
-        <div><label for="nom">Nom</label><input id="nom" name="nom" autocomplete="name" required></div>
-        <div><label for="email">E-mail</label><input id="email" name="email" type="email" autocomplete="email" required></div>
-      </div>
-      <fieldset>
-        <legend>Vous êtes intéressé par</legend>
-        <div class="choix">
-          <input type="radio" name="demande" id="d1" value="Une balade guidée" checked><label for="d1">Une balade</label>
-          <input type="radio" name="demande" id="d2" value="Des cours pour un enfant"><label for="d2">Cours enfant</label>
-          <input type="radio" name="demande" id="d3" value="Des cours ou sorties senior"><label for="d3">Cours senior</label>
-          <input type="radio" name="demande" id="d4" value="Un accompagnement mobilité réduite"><label for="d4">Mobilité réduite</label>
-          <input type="radio" name="demande" id="d5" value="Une sortie de groupe"><label for="d5">Groupe</label>
-        </div>
-      </fieldset>
-      <div><label for="message">Message</label><textarea id="message" name="message" placeholder="Nombre de personnes, dates, niveau, besoins particuliers…"></textarea></div>
-      <div><button class="btn btn-plein" type="submit">Envoyer ma demande</button></div>
-    </form>
-  </div>
-</section>
+</div></section>
+<section class="section"><div class="wrap duo">
+  <img class="apparait" src="img/bv-004.webp" alt="La vallée de l'Isère au pied du Vercors" loading="lazy">
+  <div><p class="surtitre">Pour les familles</p><h2>Le passeport de la Belle Via</h2><p>Dix étapes le long de l'Isère, de La Terrasse à Romans, et un tampon à chacune. Un jeu pour les enfants, un souvenir pour les grands, et une belle raison de revenir pédaler.</p><p><a class="lien" href="passeport.html">Découvrir le passeport</a></p></div>
+</div></section>
+<section class="section section-pierre appel"><div class="wrap">
+  <h2 class="apparait">Une balade vous tente&nbsp;?</h2><p class="chapeau">Dites-moi quand et avec qui, je vous propose l'itinéraire qui vous ressemble.</p>
+  <div class="actions"><a class="btn btn-plein" href="index.html?demande=balade#contact">Réserver une balade</a></div>
+</div></section>
 
 </main>
 <footer class="pied"><div class="wrap">
-  <div><strong>Cass à Vélo</strong><p>Balades guidées et cours de vélo à Grenoble et dans ses environs, pour tous les âges.</p></div>
-  <div><strong>Le site</strong><ul><li><a href="balades.html">Balades</a></li><li><a href="cours.html">Cours</a></li><li><a href="passeport.html">Passeport Belle Via</a></li></ul></div>
-  <div><strong>Contact</strong><ul><li><a href="index.html#contact">Formulaire</a></li><li><a class="lien-mail" href="#">E-mail</a></li><li><a href="https://thequietadventure.com/" target="_blank" rel="noopener">The Quiet Adventure</a></li></ul></div>
-  <p class="bas">© <span class="annee"></span> Cass à Vélo, Grenoble. Fonds de carte © OpenStreetMap et CARTO.</p>
+  <div><a class="marque" href="index.html">Cass à Vélo</a><p>Balades guidées à vélo, cours pour les enfants et remise en selle des seniors, à Grenoble et dans ses environs.</p></div>
+  <div><strong>Rouler</strong><ul><li><a href="balades.html">Les balades</a></li><li><a href="passeport.html">Le passeport Belle Via</a></li><li><a href="groupes.html">Groupes et structures</a></li></ul></div>
+  <div><strong>Apprendre</strong><ul><li><a href="enfants.html">Cours enfants</a></li><li><a href="seniors.html">Remise en selle</a></li><li><a href="seniors.html#mobilite">Mobilité réduite</a></li></ul></div>
+  <div><strong>Contact</strong><ul><li><a href="index.html#contact">Réserver</a></li><li><a class="lien-mail" href="#">E-mail</a></li><li><a href="https://thequietadventure.com/" target="_blank" rel="noopener">Nos voyages à vélo</a></li></ul></div>
+  <p class="bas"><span>© <span class="annee"></span> Cass à Vélo, Grenoble</span><span>Fonds de carte © OpenStreetMap, CARTO</span></p>
 </div></footer>
 <script src="donnees.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>

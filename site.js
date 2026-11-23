@@ -202,6 +202,28 @@ addEventListener("keydown", e => {
 });
 
 // ---------- Bande de photos de l'accueil ----------
-document.querySelectorAll(".bande button").forEach((b, i, tous) => b.addEventListener("click", () => {
+document.querySelectorAll(".galerie button").forEach((b, i, tous) => b.addEventListener("click", () => {
   ouvrirPhoto([...tous].map(x => PHOTOS.find(p => p.id === x.dataset.id)), i);
 }));
+
+// ---------- En-tête au défilement ----------
+const enTete = document.querySelector(".tete");
+const marquer = () => enTete && enTete.classList.toggle("defile", scrollY > 10);
+addEventListener("scroll", marquer, {passive: true}); marquer();
+
+// ---------- Apparition douce des sections ----------
+if ("IntersectionObserver" in window) {
+  const obs = new IntersectionObserver(entrees => entrees.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add("vu"); obs.unobserve(e.target); }
+  }), {rootMargin: "0px 0px -8% 0px"});
+  document.querySelectorAll(".apparait").forEach(el => obs.observe(el));
+} else {
+  document.querySelectorAll(".apparait").forEach(el => el.classList.add("vu"));
+}
+
+// ---------- Présélection de la demande depuis l'adresse (?demande=enfant) ----------
+const choixDemande = new URLSearchParams(location.search).get("demande");
+if (choixDemande) {
+  const radio = document.getElementById("d-" + choixDemande);
+  if (radio) radio.checked = true;
+}
