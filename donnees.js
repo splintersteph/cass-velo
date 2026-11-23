@@ -85,4 +85,18 @@ const PHOTOS = [
   {id: "bv-113", jour: "Vercors", lieu: "Combe Laval", legende: "Une mer de nuages sous les falaises", pos: [45.000, 5.334]}
 ];
 
+// Photos d'illustration (Wikimedia Commons, licences libres, voir credits.html)
+PHOTOS.push(
+  {id: "c-000", jour: "Photo Ed Yourdon from New York City, USA", lieu: "CC BY-SA 2.0", legende: "Une maman aide sa fille à trouver l'équilibre"},
+  {id: "c-001", jour: "Photo Trailnet", lieu: "CC BY-SA 2.0", legende: "Leçon de vélo pour une fillette"},
+  {id: "c-005", jour: "Photo Rudolph.A.furtado", lieu: "Public domain", legende: "Une sortie d'enfants encadrée"},
+  {id: "c-012", jour: "Photo Alaska DOT&PF", lieu: "CC BY 2.0", legende: "Une sortie à vélo vers l'école"},
+  {id: "c-016", jour: "Photo U.S. Navy photo by Journalist 2nd Class Travis D. Eisele.", lieu: "Public domain", legende: "Un moniteur et des enfants entre les plots"},
+  {id: "c-018", jour: "Photo Yuba Bicycles", lieu: "CC BY-SA 3.0", legende: "En vélo cargo avec trois enfants"},
+  {id: "c-044", jour: "Photo Tenlittlesoldiers", lieu: "CC BY-SA 4.0", legende: "Prêt pour une sortie en handbike"},
+  {id: "c-074", jour: "Photo Bill Branson (Photographer)", lieu: "Public domain", legende: "On ajuste les casques avant de partir"},
+  {id: "c-134", jour: "Photo Matthias Ledwinka", lieu: "CC BY-SA 4.0", legende: "Balade en famille sur une voie verte"},
+  {id: "c-136", jour: "Photo 35mmMan", lieu: "CC BY 2.0", legende: "Balade avec un compagnon à quatre pattes"}
+);
+
 const LIEN_TQA = "https://thequietadventure.com/voyages/belle-via-et-vercors/";

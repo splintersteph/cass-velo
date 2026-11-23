@@ -359,3 +359,4 @@ textarea{min-height:120px;resize:vertical}
   .pied .wrap{grid-template-columns:1fr}
   .galerie button:nth-child(odd){transform:none}
 }
+.panorama img{object-position:center 22%}

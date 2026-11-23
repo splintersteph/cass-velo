@@ -71,6 +71,7 @@ if (zoneCarte && window.L) {
 
   // Nos photos géolocalisées, en vignettes rondes sur la carte
   PHOTOS.forEach((ph, i) => {
+    if (!ph.pos) return;
     const icone = L.divIcon({className: "", html: `<div class="pin-photo" style="background-image:url(img/${ph.id}-p.webp)"></div>`, iconSize: [46, 46], iconAnchor: [23, 23]});
     L.marker(ph.pos, {icon: icone, title: ph.legende, keyboard: true}).on("click", () => ouvrirPhoto(PHOTOS, i)).addTo(carte);
   });
