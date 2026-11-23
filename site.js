@@ -38,8 +38,8 @@ if (zoneCarte && window.L) {
 
   CIRCUITS.forEach(c => {
     const fond = L.polyline(c.trace, {color: "#ffffff", weight: 8, opacity: .9});
-    const ligne = L.polyline(c.trace, {color: "#2f5d46", weight: 4});
-    const depart = L.circleMarker(c.trace[0], {radius: 7, color: "#2f5d46", weight: 3, fillColor: "#fff", fillOpacity: 1});
+    const ligne = L.polyline(c.trace, {color: "#FF6B35", weight: 5});
+    const depart = L.circleMarker(c.trace[0], {radius: 7, color: "#1B2340", weight: 3, fillColor: "#FFD23F", fillOpacity: 1});
     const groupe = L.featureGroup([fond, ligne, depart]).addTo(carte);
     groupe.on("click", () => choisir(c.id));
     couches[c.id] = groupe;
@@ -120,8 +120,8 @@ if (zoneTampons) {
     carteVia = L.map(zoneCarteVia, {scrollWheelZoom: false});
     fondDeCarte(carteVia);
     const ligne = ETAPES_VIA.map(e => e.pos);
-    L.polyline(ligne, {color: "#2f5d46", weight: 3, dashArray: "2 8", lineCap: "round"}).addTo(carteVia);
-    marqueurs = ETAPES_VIA.map((e, i) => L.circleMarker(e.pos, {radius: 9, weight: 3, color: "#2f5d46", fillColor: "#fff", fillOpacity: 1})
+    L.polyline(ligne, {color: "#3AA0FF", weight: 4, dashArray: "2 9", lineCap: "round"}).addTo(carteVia);
+    marqueurs = ETAPES_VIA.map((e, i) => L.circleMarker(e.pos, {radius: 9, weight: 3, color: "#1B2340", fillColor: "#fff", fillOpacity: 1})
       .bindTooltip(`${i + 1}. ${e.nom}`).on("click", () => basculer(i)).addTo(carteVia));
     carteVia.fitBounds(L.latLngBounds(ligne), {padding: [24, 24]});
   }
@@ -160,7 +160,7 @@ if (zoneTampons) {
       li.classList.toggle("fait-etape", ok);
       li.querySelector("span").textContent = ok ? "Tamponné" : "À faire";
     });
-    marqueurs.forEach((m, i) => m.setStyle({fillColor: poses.includes(i) ? "#2f5d46" : "#fff"}));
+    marqueurs.forEach((m, i) => m.setStyle({fillColor: poses.includes(i) ? "#FF6B35" : "#fff"}));
     document.getElementById("compte").textContent = `${poses.length} / ${ETAPES_VIA.length}`;
     document.getElementById("barre").style.width = `${poses.length / ETAPES_VIA.length * 100}%`;
   }
