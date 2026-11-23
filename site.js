@@ -17,14 +17,14 @@ const form = document.getElementById("formulaire");
 if (form) form.addEventListener("submit", e => {
   e.preventDefault();
   const f = new FormData(form);
-  const corps = `Nom : ${f.get("nom")}\nE-mail : ${f.get("email")}\nDemande : ${f.get("demande")}\n\n${f.get("message") || ""}`;
+  const corps = `Nom : ${f.get("nom")}\nE-mail : ${f.get("email")}\nDemande : ${f.get("demande")}\nPersonnes : ${f.get("personnes") || ""}\nDate : ${f.get("date") || ""}\n\n${f.get("message") || ""}`;
   location.href = `mailto:${EMAIL_CONTACT}?subject=${encodeURIComponent("Demande : " + f.get("demande"))}&body=${encodeURIComponent(corps)}`;
 });
 
 function fondDeCarte(carte) {
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
-    maxZoom: 18
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">les contributeurs d\'OpenStreetMap</a>',
+    maxZoom: 19
   }).addTo(carte);
 }
 
